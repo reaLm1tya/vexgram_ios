@@ -1,4 +1,4 @@
-import SGStrings
+﻿import SGStrings
 import Foundation
 import UIKit
 import Display
@@ -448,7 +448,7 @@ final class LocalizationListControllerNode: ViewControllerTracingNode {
                 return
             }
             
-            // MARK: Swiftgram
+            // MARK: VexGram
             let isPremium = peer?.isPremium ?? false
                         
             var entries: [LanguageListEntry] = []
@@ -741,8 +741,8 @@ final class LocalizationListControllerNode: ViewControllerTracingNode {
                 
                     self?.context.engine.messages.refreshAttachMenuBots()
                     
-                    // MARK: Swiftgram
-                    // TODO(swiftgram): consider moving to downloadAndApplyLocalization for an app-wide strings update
+                    // MARK: VexGram
+                    // TODO(VexGram): consider moving to downloadAndApplyLocalization for an app-wide strings update
                     if let baseLanguageCode = info.baseLanguageCode {
                         SGLocalizationManager.shared.downloadLocale(baseLanguageCode)
                     }

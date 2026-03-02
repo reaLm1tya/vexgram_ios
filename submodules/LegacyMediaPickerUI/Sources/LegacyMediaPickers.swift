@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import LegacyComponents
@@ -397,7 +397,7 @@ public func legacyAssetPickerEnqueueMessages(context: AccountContext, account: A
                                         defer {
                                             TempBox.shared.dispose(tempFile)
                                         }
-                                        // MARK: Swiftgram
+                                        // MARK: VexGram
                                         if let scaledImageData = compressImageToJPEG(scaledImage, quality: Float(SGSimpleSettings.shared.outgoingPhotoQuality) / 100.0, tempFilePath: tempFile.path) {
                                             let _ = try? scaledImageData.write(to: URL(fileURLWithPath: tempFilePath))
 
@@ -814,8 +814,8 @@ public func legacyAssetPickerEnqueueMessages(context: AccountContext, account: A
                                 preset = TGMediaVideoConversionPresetAnimation
                             }
                             
-                            // MARK: Swiftgram
-                            // TODO(swiftgram): Nice thumbnail
+                            // MARK: VexGram
+                            // TODO(VexGram): Nice thumbnail
                             var asTelescope = false
                             if let strongAdjustments = adjustments, strongAdjustments.sendAsTelescope {
                                 asTelescope = true
@@ -962,7 +962,7 @@ public func legacyAssetPickerEnqueueMessages(context: AccountContext, account: A
                                 attributes.append(EmbeddedMediaStickersMessageAttribute(files: stickerFiles))
                                 fileAttributes.append(.HasLinkedStickers)
                             }
-                            // MARK: Swiftgram
+                            // MARK: VexGram
                             if asTelescope {
                                 fileAttributes = [.FileName(fileName: "video.mp4"), .Video(duration: finalDuration, size: PixelDimensions(finalDimensions), flags: [.instantRoundVideo], preloadSize: nil, coverTime: nil)]
                             }

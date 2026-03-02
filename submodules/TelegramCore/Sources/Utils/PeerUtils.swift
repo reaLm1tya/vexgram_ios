@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import Postbox
 import SGSimpleSettings
 
@@ -29,10 +29,10 @@ public extension Peer {
             break
         }
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         let chatId = self.id.id._internalGetInt64Value()
         if contentSettings.appConfiguration.sgWebSettings.global.forceReasons.contains(chatId) {
-            return "Unavailable in Swiftgram due to App Store Guidelines"
+            return "Unavailable in VexGram due to App Store Guidelines"
         } else if contentSettings.appConfiguration.sgWebSettings.global.unforceReasons.contains(chatId) {
             return nil
         }
@@ -257,7 +257,7 @@ public extension Peer {
             return false
         }
     }
-    // MARK: Swiftgram
+    // MARK: VexGram
     var nameColor: PeerNameColor? {
         if SGSimpleSettings.shared.accountColorsSaturation == 0 {
             return nil

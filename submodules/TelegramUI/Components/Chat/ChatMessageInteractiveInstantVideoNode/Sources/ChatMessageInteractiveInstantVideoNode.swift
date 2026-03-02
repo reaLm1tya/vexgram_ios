@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import Display
@@ -1882,7 +1882,7 @@ public class ChatMessageInteractiveInstantVideoNode: ASDisplayNode {
             }
         }
         
-        // TODO(swiftgram): Transcribe Video Messages
+        // TODO(VexGram): Transcribe Video Messages
         if shouldBeginTranscription {
             if self.transcribeDisposable == nil {
                 self.audioTranscriptionState = .inProgress

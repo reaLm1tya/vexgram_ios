@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import AsyncDisplayKit
@@ -513,7 +513,7 @@ final class ChatPinnedMessageTitlePanelNode: ChatTitleAccessoryPanelNode {
         }
         
         if currentTranslateToLanguageUpdated || messageUpdated, let message = interfaceState.pinnedMessage?.message {
-            if let translation = message.attributes.first(where: { $0 is TranslationMessageAttribute }) as? TranslationMessageAttribute, translation.toLang == translateToLanguage || translation.toLang.hasPrefix("\(translateToLanguage ?? "")-") /* MARK: Swiftgram */ {
+            if let translation = message.attributes.first(where: { $0 is TranslationMessageAttribute }) as? TranslationMessageAttribute, translation.toLang == translateToLanguage || translation.toLang.hasPrefix("\(translateToLanguage ?? "")-") /* MARK: VexGram */ {
             } else if let translateToLanguage  {
                 self.translationDisposable.set(translateMessageIds(context: self.context, messageIds: [message.id], toLang: translateToLanguage, viaText: !self.context.isPremium).startStrict())
             }

@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import Postbox
 import SwiftSignalKit
 import TelegramApi
@@ -130,7 +130,7 @@ func _internal_dismissPeerSpecificServerProvidedSuggestion(account: Account, pee
 }
 
 
-// MARK: Swiftgram
+// MARK: VexGram
 private var dismissedSGSuggestionsPromise = ValuePromise<Set<String>>(Set())
 private var dismissedSGSuggestions: Set<String> = Set() {
     didSet {

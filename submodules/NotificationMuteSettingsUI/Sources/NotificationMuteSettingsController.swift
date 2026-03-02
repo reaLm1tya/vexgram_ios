@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import TelegramCore
@@ -42,7 +42,7 @@ public func notificationMuteSettingsController(presentationData: PresentationDat
         updateSettings(muteInterval)
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     let options: [NotificationMuteOption] = [
         .enable,
         .interval(1 * 60 * 60),

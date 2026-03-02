@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import SwiftSignalKit
@@ -737,7 +737,7 @@ class TabBarNode: ASDisplayNode, ASGestureRecognizerDelegate {
                 node.contextImageNode.frame = CGRect(origin: CGPoint(), size: nodeFrame.size)
                 node.contextTextImageNode.frame = CGRect(origin: CGPoint(), size: nodeFrame.size)
                                 
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if !self.showTabNames {
                     node.imageNode.frame = CGRect(origin: CGPoint(x: 0.0, y: 6.0), size: nodeFrame.size)
                     node.textImageNode.frame = CGRect(origin: CGPoint(), size: CGSize())

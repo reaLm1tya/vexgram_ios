@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import SwiftSignalKit
@@ -1169,7 +1169,7 @@ public class Window1 {
                 
                 if let image = self.badgeView.image {
                     self.updateBadgeVisibility()
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     var badgeOffset: CGFloat
                     if case self.deviceMetrics = DeviceMetrics.iPhone14ProZoomed {
                         badgeOffset = self.deviceMetrics.statusBarHeight - DeviceMetrics.iPhone14ProZoomed.statusBarHeight

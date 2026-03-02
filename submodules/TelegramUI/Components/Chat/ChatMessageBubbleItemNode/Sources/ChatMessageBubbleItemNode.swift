@@ -1,4 +1,4 @@
-import SGStrings
+﻿import SGStrings
 import SGSimpleSettings
 import TranslateUI
 import Foundation
@@ -279,7 +279,7 @@ private func contentNodeMessagesAndClassesForItem(_ item: ChatMessageItem) -> ([
                     }
                     
                     
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     var message = message
                     if message.canRevealContent(contentSettings: item.context.currentContentSettings.with { $0 }) {
                         let originalTextLength = message.text.count
@@ -297,7 +297,7 @@ private func contentNodeMessagesAndClassesForItem(_ item: ChatMessageItem) -> ([
                                 entities: [
                                     MessageTextEntity(
                                         range: startIndex..<endIndex,
-                                        // TODO(swiftgram): Add more instructions to collapsed block?
+                                        // TODO(VexGram): Add more instructions to collapsed block?
                                         type: .BlockQuote(isCollapsed: false) //.Custom(type: ApplicationSpecificEntityType.Button)
                                     )
                                 ]
@@ -1208,7 +1208,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
                 if let shareButtonNode = strongSelf.shareButtonNode, shareButtonNode.frame.contains(point) {
                     return .fail
                 }
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if let quickTranslateButtonNode = strongSelf.quickTranslateButtonNode, quickTranslateButtonNode.frame.contains(point) {
                     return .fail
                 }
@@ -1657,7 +1657,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
         
         let isFailed = item.content.firstMessage.effectivelyFailed(timestamp: item.context.account.network.getApproximateRemoteTimestamp())
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         var localNeedsQuickTranslateButton = false /* SGSimpleSettings.defaultValues[SGSimpleSettings.Keys.quickTranslateButton.rawValue] as! Bool*/
         if let strongSelf = selfReference.value {
             if strongSelf.needsQuickTranslateButton {
@@ -2275,7 +2275,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
         var mosaicStatusSizeAndApply: (CGSize, (ListViewItemUpdateAnimation) -> ChatMessageDateAndStatusNode)?
         
         if let mosaicRange = mosaicRange {
-            // MARK: Swiftgram
+            // MARK: VexGram
             var maxDimensions = layoutConstants.image.maxDimensions
             if renderWideChannelPosts {
                 maxDimensions.width = maximumContentWidth
@@ -2287,7 +2287,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
                 }
                 return size
             })
-            // MARK: Swiftgram
+            // MARK: VexGram
             if innerSize.height > maxSize.height, maxDimensions.width != layoutConstants.image.maxDimensions.width {
                 maxDimensions.width = max(round(maxDimensions.width * maxSize.height / innerSize.height), layoutConstants.image.maxDimensions.width)
                 maxSize = maxDimensions.fittedToWidthOrSmaller(maximumContentWidth - layoutConstants.image.bubbleInsets.left - layoutConstants.image.bubbleInsets.right)
@@ -4354,8 +4354,8 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
             shareButtonNode.removeFromSupernode()
         }
         
-        // MARK: Swiftgram
-        // TODO(swiftgram): Move business-logic up to hierarchy
+        // MARK: VexGram
+        // TODO(VexGram): Move business-logic up to hierarchy
         if strongSelf.needsQuickTranslateButton && incoming && !item.message.text.isEmpty && item.message.adAttribute == nil {
             if strongSelf.quickTranslateButtonNode == nil {
                 let quickTranslateButtonNode = ChatMessageShareButton()
@@ -4532,7 +4532,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
                 animation.animator.updateAlpha(layer: shareButtonNode.layer, alpha: isCurrentlyPlayingMedia ? 0.0 : 1.0, completion: nil)
 
             }
-            // MARK: Swiftgram
+            // MARK: VexGram
             if let quickTranslateButtonNode = strongSelf.quickTranslateButtonNode {
                 let currentBackgroundFrame = strongSelf.backgroundNode.frame
                 let buttonSize = quickTranslateButtonNode.update(hasTranslation: false /*item.message.attributes.first(where: { $0 is QuickTranslationMessageAttribute }) as? QuickTranslationMessageAttribute != nil*/, presentationData: item.presentationData, controllerInteraction: item.controllerInteraction, chatLocation: item.chatLocation, subject: item.associatedData.subject, message: item.message, account: item.context.account, disableComments: disablesComments)
@@ -4582,7 +4582,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
                 shareButtonNode.alpha = isCurrentlyPlayingMedia ? 0.0 : 1.0
             }
 
-            // MARK: Swiftgram
+            // MARK: VexGram
             if let quickTranslateButtonNode = strongSelf.quickTranslateButtonNode {
                 let buttonSize = quickTranslateButtonNode.update(hasTranslation: false /*item.message.attributes.first(where: { $0 is QuickTranslationMessageAttribute }) as? QuickTranslationMessageAttribute != nil*/, presentationData: item.presentationData, controllerInteraction: item.controllerInteraction, chatLocation: item.chatLocation, subject: item.associatedData.subject, message: item.message, account: item.context.account, disableComments: disablesComments)
                 
@@ -5399,7 +5399,7 @@ public class ChatMessageBubbleItemNode: ChatMessageItemView, ChatMessagePreviewI
         if let shareButtonNode = self.shareButtonNode, shareButtonNode.frame.contains(point) {
             return shareButtonNode.view.hitTest(self.view.convert(point, to: shareButtonNode.view), with: event)
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         if let quickTranslateButtonNode = self.quickTranslateButtonNode, quickTranslateButtonNode.frame.contains(point) {
             return quickTranslateButtonNode.view.hitTest(self.view.convert(point, to: quickTranslateButtonNode.view), with: event)
         }

@@ -1,9 +1,9 @@
-import Foundation
+﻿import Foundation
 import Postbox
 import SGWebSettingsScheme
 
 public struct AppConfiguration: Codable, Equatable {
-    // MARK: Swiftgram
+    // MARK: VexGram
     public var sgWebSettings: SGWebSettings
     
     public var data: JSON?

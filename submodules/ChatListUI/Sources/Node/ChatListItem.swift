@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import AsyncDisplayKit
@@ -1616,7 +1616,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
         } else if case let .groupReference(groupReference) = item.content {
             storyState = groupReference.storyState
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         let sgCompactChatList = SGSimpleSettings.shared.compactChatList
         var peer: EnginePeer?
         var displayAsMessage = false
@@ -1682,7 +1682,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                     isForumAvatar = true
                 }
             }
-            // MARK: Swiftgram
+            // MARK: VexGram
             var avatarDiameter = min(60.0, floor(item.presentationData.fontSize.baseDisplaySize * 60.0 / 17.0)) / (sgCompactChatList ? 1.5 : 1.0)
             
             if case let .peer(peerData) = item.content, let customMessageListData = peerData.customMessageListData, customMessageListData.commandPrefix != nil {
@@ -1900,7 +1900,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
         let currentCustomTextEntities = self.cachedCustomTextEntities
         
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         let sgCompactChatList = SGSimpleSettings.shared.compactChatList
         
         return { item, params, first, last, firstWithHeader, nextIsPinned in
@@ -2130,7 +2130,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
             }
             
             let enableChatListPhotos = true
-            // MARK: Swiftgram
+            // MARK: VexGram
             // if changed, adjust setupItem accordingly
             var avatarDiameter = min(60.0, floor(item.presentationData.fontSize.baseDisplaySize * 60.0 / 17.0)) / (sgCompactChatList ? 1.5 : 1.0)
             let avatarLeftInset: CGFloat
@@ -2200,7 +2200,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                     contentData = .group(peers: groupPeers)
                     hideAuthor = true
             }
-            // MARK: Swiftgram
+            // MARK: VexGram
             if sgCompactChatList { hideAuthor = true };
             var attributedText: NSAttributedString
             var hasDraft = false
@@ -2229,7 +2229,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                     }
                 }
             }
-            // MARK: Swiftgram
+            // MARK: VexGram
             if sgCompactChatList { useInlineAuthorPrefix = true };
             if useInlineAuthorPrefix {
                 if case let .user(author) = messages.last?.author {
@@ -3157,7 +3157,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
             let maxTitleLines: Int
             switch item.index {
             case .forum:
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if sgCompactChatList { maxTitleLines = 1 } else {
                 maxTitleLines = 2
                 }
@@ -3332,7 +3332,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                 itemHeight += titleSpacing
                 itemHeight += authorSpacing
             }
-            // MARK: Swiftgram
+            // MARK: VexGram
             itemHeight = itemHeight / (sgCompactChatList ? 1.5 : 1.0)
             let rawContentRect = CGRect(origin: CGPoint(x: 2.0, y: layoutOffset + floor(item.presentationData.fontSize.itemListBaseFontSize * 8.0 / 17.0)), size: CGSize(width: rawContentWidth, height: itemHeight - 12.0 - 9.0))
             
@@ -3488,7 +3488,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                     var avatarScaleOffset: CGFloat = 0.0
                     var avatarScale: CGFloat = 1.0
                     if let inlineNavigationLocation = item.interaction.inlineNavigationLocation {
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         let targetAvatarScale: CGFloat = floor(item.presentationData.fontSize.itemListBaseFontSize * 54.0 / 17.0) / (sgCompactChatList ? 1.5 : 1.0) / avatarFrame.width
                         avatarScale = targetAvatarScale * inlineNavigationLocation.progress + 1.0 * (1.0 - inlineNavigationLocation.progress)
                         
@@ -3826,13 +3826,13 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                     let _ = strongSelf.statusNode.transitionToState(statusState, animated: animateContent)
                     
                     if let _ = currentBadgeBackgroundImage {
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         let sizeFactor = item.presentationData.fontSize.itemListBaseFontSize / 17.0
                         let badgeFrame = CGRect(x: contentRect.maxX - badgeLayout.width, y: contentRect.maxY - badgeLayout.height - 2.0 + (sgCompactChatList ? 13.0 / sizeFactor : 0.0), width: badgeLayout.width, height: badgeLayout.height)
                         
                         transition.updateFrame(node: strongSelf.badgeNode, frame: badgeFrame)
                     }
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     let sizeFactor = item.presentationData.fontSize.itemListBaseFontSize / 17.0
                     if currentMentionBadgeImage != nil || currentBadgeBackgroundImage != nil {
                         let mentionBadgeOffset: CGFloat
@@ -3852,7 +3852,7 @@ public class ChatListItemNode: ItemListRevealOptionsItemNode {
                         strongSelf.pinnedIconNode.isHidden = false
                         
                         let pinnedIconSize = currentPinnedIconImage.size
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         let pinnedIconFrame = CGRect(x: contentRect.maxX - pinnedIconSize.width, y: contentRect.maxY - pinnedIconSize.height - 2.0 + (sgCompactChatList ? 13.0 / sizeFactor : 0.0), width: pinnedIconSize.width, height: pinnedIconSize.height)
                         
                         strongSelf.pinnedIconNode.frame = pinnedIconFrame

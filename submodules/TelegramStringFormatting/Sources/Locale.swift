@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import TelegramPresentationData
 
 private let systemLocaleRegionSuffix: String = {
@@ -15,7 +15,7 @@ public let usEnglishLocale = Locale(identifier: "en_US")
 public func localeWithStrings(_ strings: PresentationStrings) -> Locale {
     var languageCode = strings.baseLanguageCode
     
-    // MARK: - Swiftgram fix for locale bugs, like location crash
+    // MARK: - VexGram fix for locale bugs, like location crash
     if #available(iOS 18, *) {
         let rawSuffix = "-raw"
         if languageCode.hasSuffix(rawSuffix) {

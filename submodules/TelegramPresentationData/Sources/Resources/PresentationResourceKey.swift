@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 
 public struct PresentationResources {
@@ -283,7 +283,7 @@ public enum PresentationResourceKey: Int32 {
     case chatFreeCloseButtonIcon
     case chatFreeMoreButtonIcon
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     case chatTranslateButtonIcon
     case chatUndoTranslateButtonIcon
     

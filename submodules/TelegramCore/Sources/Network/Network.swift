@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import SGSimpleSettings
 
 import Foundation

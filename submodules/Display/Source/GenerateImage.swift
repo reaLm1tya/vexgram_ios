@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Accelerate
 import AsyncDisplayKit
@@ -300,13 +300,13 @@ public func generateSmallHorizontalStretchableFilledCircleImage(diameter: CGFloa
 }
 
 
-// MARK: Swiftgram
+// MARK: VexGram
 public func generateTintedImage(image: UIImage?, color: UIColor, backgroundColor: UIColor? = nil, customSize: CGSize? = nil) -> UIImage? {
     guard let image = image else {
         return nil
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     var imageSize = image.size
     if let strongCustomSize = customSize {
         imageSize = strongCustomSize

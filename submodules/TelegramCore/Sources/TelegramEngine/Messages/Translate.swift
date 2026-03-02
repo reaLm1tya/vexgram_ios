@@ -1,4 +1,4 @@
-#if DEBUG
+﻿#if DEBUG
 import SGSimpleSettings
 #endif
 import SGTranslationLangFix
@@ -304,7 +304,7 @@ func _internal_togglePeerMessagesTranslationHidden(account: Account, peerId: Eng
     }
 }
 
-// TODO(swiftgram): Refactor
+// TODO(VexGram): Refactor
 public struct TranslateRule: Codable {
     public let name: String
     public let pattern: String

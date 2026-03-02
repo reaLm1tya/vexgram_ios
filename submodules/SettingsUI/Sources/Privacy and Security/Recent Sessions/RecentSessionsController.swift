@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import SwiftSignalKit
@@ -801,7 +801,7 @@ public func recentSessionsController(context: AccountContext, activeSessionsCont
         guard let appConfiguration = view.values[PreferencesKeys.appConfiguration]?.get(AppConfiguration.self) else {
             return false
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         if appConfiguration.sgWebSettings.global.qrLogin {
             return true
         }

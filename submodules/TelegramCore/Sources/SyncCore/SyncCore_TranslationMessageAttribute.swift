@@ -1,4 +1,4 @@
-import Postbox
+﻿import Postbox
 
 public class TranslationMessageAttribute: MessageAttribute, Equatable {
     public struct Additional : PostboxCoding, Equatable {
@@ -94,7 +94,7 @@ public class TranslationMessageAttribute: MessageAttribute, Equatable {
 
 
 
-// MARK: Swiftgram
+// MARK: VexGram
 public class QuickTranslationMessageAttribute: MessageAttribute, Equatable {
     public let originalText: String
     public let originalEntities: [MessageTextEntity]

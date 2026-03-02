@@ -1,11 +1,11 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+﻿load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 sgdeps = [
-    "//Swiftgram/SGSimpleSettings:SGSimpleSettings"
+    "//VexGram/SGSimpleSettings:SGSimpleSettings"
 ]
 
 sgsrc = [
-    "//Swiftgram/SGEmojiKeyboardDefaultFirst:SGEmojiKeyboardDefaultFirst"
+    "//VexGram/SGEmojiKeyboardDefaultFirst:SGEmojiKeyboardDefaultFirst"
 ]
 
 swift_library(

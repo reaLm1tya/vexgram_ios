@@ -1,4 +1,4 @@
-import SGStrings
+﻿import SGStrings
 import Foundation
 import UIKit
 import Display
@@ -201,15 +201,15 @@ public func deleteAccountOptionsController(context: AccountContext, navigationCo
         |> take(1)
         |> deliverOnMainQueue
         ).start(next: { accountAndPeer, accountsAndPeers in
-            var maximumAvailableAccounts: Int = maximumSwiftgramNumberOfAccounts
+            var maximumAvailableAccounts: Int = maximumVexGramNumberOfAccounts
             if accountAndPeer?.1.isPremium == true && !context.account.testingEnvironment {
-                maximumAvailableAccounts = maximumSwiftgramNumberOfAccounts
+                maximumAvailableAccounts = maximumVexGramNumberOfAccounts
             }
             var count: Int = 1
             for (accountContext, peer, _) in accountsAndPeers {
                 if !accountContext.account.testingEnvironment {
                     if peer.isPremium {
-                        maximumAvailableAccounts = maximumSwiftgramNumberOfAccounts
+                        maximumAvailableAccounts = maximumVexGramNumberOfAccounts
                     }
                     count += 1
                 }

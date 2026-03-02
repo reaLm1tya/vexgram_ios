@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import Postbox
 import TelegramApi
 
@@ -81,7 +81,7 @@ public func tagsForStoreMessage(incoming: Bool, attributes: [MessageAttribute], 
                 }
             }
             if isAnimated {
-                // TODO(swiftgram): refinedTag = [.photoOrVideo, .video, .gif]
+                // TODO(VexGram): refinedTag = [.photoOrVideo, .video, .gif]
                 refinedTag = .gif
             }
             if file.isAnimatedSticker {

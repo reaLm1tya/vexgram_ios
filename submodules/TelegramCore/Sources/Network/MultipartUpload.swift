@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import Postbox
 import TelegramApi
@@ -480,7 +480,7 @@ func multipartUpload(network: Network, postbox: Postbox, source: MultipartUpload
                 }
             }
             
-            // TODO(swiftgram): Change other variables for uploadSpeedBoost
+            // TODO(VexGram): Change other variables for uploadSpeedBoost
             let manager = MultipartUploadManager(headerSize: headerSize, data: dataSignal, encryptionKey: encryptionKey, hintFileSize: hintFileSize, hintFileIsLarge: hintFileIsLarge, forceNoBigParts: forceNoBigParts, useLargerParts: useLargerParts || SGSimpleSettings.shared.uploadSpeedBoost, increaseParallelParts: increaseParallelParts || SGSimpleSettings.shared.uploadSpeedBoost, uploadPart: { part in
                 switch uploadInterface {
                 case let .download(download):

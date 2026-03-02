@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import TelegramPresentationData
 import TelegramUIPreferences
 
@@ -203,7 +203,7 @@ public func roundDateToDays(_ timestamp: Int32) -> Int32 {
 
 
 
-// MARK: Swiftgram
+// MARK: VexGram
 public func stringForDateWithoutDay(date: Date, timeZone: TimeZone? = TimeZone(secondsFromGMT: 0), strings: PresentationStrings) -> String {
     let formatter = DateFormatter()
     formatter.timeStyle = .none

@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import SGDebugUI
 import SGSimpleSettings
 import SGSettingsUI
@@ -498,7 +498,7 @@ private enum PeerInfoContextSubject {
 }
 
 private enum PeerInfoSettingsSection {
-    case swiftgram
+    case VexGram
     case avatar
     case edit
     case proxy
@@ -749,7 +749,7 @@ private final class PeerInfoInteraction {
         self.getController = getController
     }
 }
-// MARK: Swiftgram
+// MARK: VexGram
 private let enabledPublicBioEntities: EnabledEntityTypes = [.allUrl, .mention, .hashtag]
 private let enabledPrivateBioEntities: EnabledEntityTypes = [.allUrl, .mention, .hashtag]
 
@@ -759,7 +759,7 @@ private enum SettingsSection: Int, CaseIterable {
     case accounts
     case myProfile
     case proxy
-    case swiftgram
+    case VexGram
     case apps
     case shortcuts
     case advanced
@@ -820,7 +820,7 @@ private func settingsItems(showProfileId: Bool, data: PeerInfoScreenData?, conte
         }))
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     if showProfileId {
         var idText = ""
         
@@ -935,19 +935,19 @@ private func settingsItems(showProfileId: Bool, data: PeerInfoScreenData?, conte
     
     let sgSectionId = 0
     // let locale = presentationData.strings.baseLanguageCode
-    // MARK: Swiftgram
+    // MARK: VexGram
     let hasNewSGFeatures = {
         return false
     }
-    let swiftgramLabel: PeerInfoScreenDisclosureItem.Label
+    let VexGramLabel: PeerInfoScreenDisclosureItem.Label
     if hasNewSGFeatures() {
-        swiftgramLabel = .titleBadge(presentationData.strings.Settings_New, presentationData.theme.list.itemAccentColor)
+        VexGramLabel = .titleBadge(presentationData.strings.Settings_New, presentationData.theme.list.itemAccentColor)
     } else {
-        swiftgramLabel = .none
+        VexGramLabel = .none
     }
     
-    items[.swiftgram]!.append(PeerInfoScreenDisclosureItem(id: sgSectionId, label: swiftgramLabel, text: "Swiftgram", icon: PresentationResourcesSettings.swiftgram, action: {
-        interaction.openSettings(.swiftgram)
+    items[.VexGram]!.append(PeerInfoScreenDisclosureItem(id: sgSectionId, label: VexGramLabel, text: "VexGram", icon: PresentationResourcesSettings.VexGram, action: {
+        interaction.openSettings(.VexGram)
     }))
 
     var appIndex = 1000
@@ -1046,7 +1046,7 @@ private func settingsItems(showProfileId: Bool, data: PeerInfoScreenData?, conte
         items[.payment]!.append(PeerInfoScreenDisclosureItem(id: 103, label: .text(""), additionalBadgeLabel: presentationData.strings.Settings_New, text: presentationData.strings.Settings_Business, icon: PresentationResourcesSettings.business, action: {
             interaction.openSettings(.businessSetup)
         }))
-        // MARK: Swiftgram
+        // MARK: VexGram
         /*
         items[.payment]!.append(PeerInfoScreenDisclosureItem(id: 104, label: .text(""), text: presentationData.strings.Settings_PremiumGift, icon: PresentationResourcesSettings.premiumGift, action: {
             interaction.openSettings(.premiumGift)
@@ -1251,7 +1251,7 @@ private func settingsEditingItems(data: PeerInfoScreenData?, state: PeerInfoStat
 }
 
 private enum InfoSection: Int, CaseIterable {
-    case swiftgram
+    case VexGram
     case groupLocation
     case calls
     case personalChannel
@@ -1267,7 +1267,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
     
     var currentPeerInfoSection: InfoSection = .peerInfo
 
-    // MARK: Swiftgram
+    // MARK: VexGram
     var sgItemId = 0
     var idText = ""
     //    var isUser = false
@@ -1295,7 +1295,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
     }
     
     if let user = data.peer as? TelegramUser {
-        // MARK: Swiftgram
+        // MARK: VexGram
         idText = String(user.id.id._internalGetInt64Value())
 //        isUser = true
         
@@ -1602,7 +1602,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
             }
         }
     } else if let channel = data.peer as? TelegramChannel {
-        // MARK: Swiftgram
+        // MARK: VexGram
         idText = "-100" + String(channel.id.id._internalGetInt64Value())
         
         let ItemUsername = 1
@@ -1811,7 +1811,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
             }
         }
     } else if let group = data.peer as? TelegramGroup {
-        // MARK: Swiftgram
+        // MARK: VexGram
         idText = String(group.id.id._internalGetInt64Value())
          
         if let cachedData = data.cachedData as? CachedGroupData {
@@ -1884,9 +1884,9 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
         }
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     if showProfileId {
-        items[.swiftgram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: "id: \(idText)", text: "", textColor: .primary, action: nil, longTapAction: { sourceNode in
+        items[.VexGram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: "id: \(idText)", text: "", textColor: .primary, action: nil, longTapAction: { sourceNode in
             interaction.openPeerInfoContextMenu(.copy(idText), sourceNode, nil)
         }, requestLayout: { _ in
             interaction.requestLayout(false)
@@ -1921,7 +1921,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
             }
         }
         if !dcText.isEmpty {
-            items[.swiftgram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: "dc: \(dcText)", text: "", textColor: .primary, action: nil, longTapAction: { sourceNode in
+            items[.VexGram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: "dc: \(dcText)", text: "", textColor: .primary, action: nil, longTapAction: { sourceNode in
                 interaction.openPeerInfoContextMenu(.aboutDC, sourceNode, nil)
             }, requestLayout: { _ in
                 interaction.requestLayout(false)
@@ -1933,7 +1933,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
     if SGSimpleSettings.shared.showCreationDate {
         if let channelCreationTimestamp = data.channelCreationTimestamp {
             let creationDateString = stringForDate(timestamp: channelCreationTimestamp, strings: presentationData.strings)
-            items[.swiftgram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: i18n("Chat.Created", presentationData.strings.baseLanguageCode, creationDateString), text: "", action: nil, longTapAction: { sourceNode in
+            items[.VexGram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: i18n("Chat.Created", presentationData.strings.baseLanguageCode, creationDateString), text: "", action: nil, longTapAction: { sourceNode in
                 interaction.openPeerInfoContextMenu(.copy(creationDateString), sourceNode, nil)
             }, requestLayout: { _ in
                 interaction.requestLayout(false)
@@ -1944,7 +1944,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
     
     if let invitedAt = nearestChatParticipant.1 {
         let joinedDateString = stringForDate(timestamp: invitedAt, strings: presentationData.strings)
-        items[.swiftgram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: i18n("Chat.JoinedDateTitle", presentationData.strings.baseLanguageCode, nearestChatParticipant.0 ?? "chat") , text: joinedDateString, action: nil, longTapAction: { sourceNode in
+        items[.VexGram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: i18n("Chat.JoinedDateTitle", presentationData.strings.baseLanguageCode, nearestChatParticipant.0 ?? "chat") , text: joinedDateString, action: nil, longTapAction: { sourceNode in
             interaction.openPeerInfoContextMenu(.copy(joinedDateString), sourceNode, nil)
         }, requestLayout: { _ in
             interaction.requestLayout(false)
@@ -1964,7 +1964,7 @@ private func infoItems(nearestChatParticipant: (String?, Int32?), showProfileId:
                 default:
                     regDateString = stringForDate(timestamp: regTimestamp, strings: presentationData.strings)
             }
-            items[.swiftgram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: i18n("Chat.RegDate", presentationData.strings.baseLanguageCode), text: regDateString, action: nil, longTapAction: { sourceNode in
+            items[.VexGram]!.append(PeerInfoScreenLabeledValueItem(id: sgItemId, label: i18n("Chat.RegDate", presentationData.strings.baseLanguageCode), text: regDateString, action: nil, longTapAction: { sourceNode in
                 interaction.openPeerInfoContextMenu(.copy(regDateString), sourceNode, nil)
             }, requestLayout: { _ in
                 interaction.requestLayout(false)
@@ -4728,7 +4728,7 @@ final class PeerInfoScreenNode: ViewControllerTracingNode, PeerInfoScreenNodePro
             self?.updateNavigation(transition: .immediate, additive: true, animateHeader: true)
         }
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         let showProfileIdSignal = self.context.account.postbox.preferencesView(keys: [ApplicationSpecificPreferencesKeys.SGUISettings])
         |> map { view -> Bool in
             let settings: SGUISettings = view.values[ApplicationSpecificPreferencesKeys.SGUISettings]?.get(SGUISettings.self) ?? .default
@@ -6256,7 +6256,7 @@ final class PeerInfoScreenNode: ViewControllerTracingNode, PeerInfoScreenNodePro
                             }
                         })))
                     }
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     if ({ return false }()) && strongSelf.peerId.namespace == Namespaces.Peer.CloudUser, !user.isDeleted && user.botInfo == nil && !user.flags.contains(.isSupport), let cachedData = data.cachedData as? CachedUserData, !cachedData.premiumGiftOptions.isEmpty {
                         items.append(.action(ContextMenuActionItem(text: presentationData.strings.PeerInfo_GiftPremium, icon: { theme in
                             generateTintedImage(image: UIImage(bundleImageName: "Chat/Context Menu/Gift"), color: theme.contextMenu.primaryColor)
@@ -9048,7 +9048,7 @@ final class PeerInfoScreenNode: ViewControllerTracingNode, PeerInfoScreenNodePro
                     }
                 }))
             }
-        // MARK: Swiftgram
+        // MARK: VexGram
         case let .copy(text):
             let contextMenuController = makeContextMenuController(actions: [ContextMenuAction(content: .text(title: self.presentationData.strings.Conversation_ContextMenuCopy, accessibilityLabel: self.presentationData.strings.Conversation_ContextMenuCopy), action: { [weak self] in
                 UIPasteboard.general.string = text
@@ -10255,7 +10255,7 @@ final class PeerInfoScreenNode: ViewControllerTracingNode, PeerInfoScreenNodePro
             }
         }
         switch section {
-        case .swiftgram:
+        case .VexGram:
             self.controller?.push(sgSettingsController(context: self.context))
         case .avatar:
             self.openAvatarForEditing()
@@ -10421,15 +10421,15 @@ final class PeerInfoScreenNode: ViewControllerTracingNode, PeerInfoScreenNodePro
                 guard let strongSelf = self else {
                     return
                 }
-                var maximumAvailableAccounts: Int = maximumSwiftgramNumberOfAccounts
+                var maximumAvailableAccounts: Int = maximumVexGramNumberOfAccounts
                 if accountAndPeer?.1.isPremium == true && !strongSelf.context.account.testingEnvironment {
-                    maximumAvailableAccounts = maximumSwiftgramNumberOfAccounts
+                    maximumAvailableAccounts = maximumVexGramNumberOfAccounts
                 }
                 var count: Int = 1
                 for (accountContext, peer, _) in accountsAndPeers {
                     if !accountContext.account.testingEnvironment {
                         if peer.isPremium {
-                            maximumAvailableAccounts = maximumSwiftgramNumberOfAccounts
+                            maximumAvailableAccounts = maximumVexGramNumberOfAccounts
                         }
                         count += 1
                     }
@@ -13138,9 +13138,9 @@ public final class PeerInfoScreenImpl: ViewController, PeerInfoScreen, KeyShortc
         
         var items: [ContextMenuItem] = []
 
-        // MARK: Swiftgram
+        // MARK: VexGram
         #if DEBUG
-        items.append(.action(ContextMenuActionItem(text: "Swiftgram Debug", icon: { theme in
+        items.append(.action(ContextMenuActionItem(text: "VexGram Debug", icon: { theme in
             return generateTintedImage(image: nil, color: theme.contextMenu.primaryColor)
         }, action: { [weak self] _, f in
             guard let self = self else {
@@ -14293,7 +14293,7 @@ private final class HeaderContextReferenceContentSource: ContextReferenceContent
 
 
 
-// MARK: Swiftgram
+// MARK: VexGram
 extension PeerInfoScreenImpl {
 
     public func tabBarItemContextAction(sourceView: UIView, gesture: ContextGesture?) {
@@ -14305,9 +14305,9 @@ extension PeerInfoScreenImpl {
         
         var items: [ContextMenuItem] = []
 
-        // MARK: Swiftgram
+        // MARK: VexGram
         #if DEBUG
-        items.append(.action(ContextMenuActionItem(text: "Swiftgram Debug", icon: { theme in
+        items.append(.action(ContextMenuActionItem(text: "VexGram Debug", icon: { theme in
             return generateTintedImage(image: nil, color: theme.contextMenu.primaryColor)
         }, action: { [weak self] _, f in
             guard let self = self else {

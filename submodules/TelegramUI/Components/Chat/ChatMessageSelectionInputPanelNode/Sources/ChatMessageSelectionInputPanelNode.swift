@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import Display
@@ -65,7 +65,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
     private let deleteButton: HighlightableButtonNode
     private let reportButton: HighlightableButtonNode
     private let forwardButton: HighlightableButtonNode
-    // MARK: Swiftgram
+    // MARK: VexGram
     private let cloudButton: HighlightableButtonNode
     private let forwardHideNamesButton: HighlightableButtonNode
     private let shareButton: HighlightableButtonNode
@@ -110,7 +110,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
         self.forwardButton.isAccessibilityElement = true
         self.forwardButton.accessibilityLabel = strings.VoiceOver_MessageContextForward
 
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.cloudButton = HighlightableButtonNode(pointerStyle: .rectangle(CGSize(width: 56.0, height: 40.0)))
         self.cloudButton.isAccessibilityElement = true
         self.cloudButton.accessibilityLabel = "Save To Cloud"
@@ -162,7 +162,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
         self.forwardButton.isImplicitlyDisabled = true
         self.shareButton.isImplicitlyDisabled = true
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.cloudButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "SaveToCloud"), color: theme.chat.inputPanel.panelControlAccentColor), for: [.normal])
         self.cloudButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "SaveToCloud"), color: theme.chat.inputPanel.panelControlDisabledColor), for: [.disabled])
         self.addSubnode(self.cloudButton)
@@ -189,7 +189,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
     
     private func updateActions() {
         self.forwardButton.isEnabled = self.selectedMessages.count != 0
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.cloudButton.isEnabled = self.forwardButton.isEnabled
         self.forwardHideNamesButton.isEnabled = self.forwardButton.isEnabled
         
@@ -222,7 +222,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
             self.reportButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "Chat/Input/Accessory Panels/MessageSelectionReport"), color: theme.chat.inputPanel.panelControlDisabledColor), for: [.disabled])
             self.forwardButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "Chat/Input/Accessory Panels/MessageSelectionForward"), color: theme.chat.inputPanel.panelControlAccentColor), for: [.normal])
             self.forwardButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "Chat/Input/Accessory Panels/MessageSelectionForward"), color: theme.chat.inputPanel.panelControlDisabledColor), for: [.disabled])
-            // MARK: Swiftgram
+            // MARK: VexGram
             self.cloudButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "SaveToCloud"), color: theme.chat.inputPanel.panelControlAccentColor), for: [.normal])
             self.cloudButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "SaveToCloud"), color: theme.chat.inputPanel.panelControlDisabledColor), for: [.disabled])
             self.forwardHideNamesButton.setImage(generateTintedImage(image: UIImage(bundleImageName: "Avatar/AnonymousSenderIcon"), color: theme.chat.inputPanel.panelControlAccentColor, customSize: CGSize(width: 28.0, height: 28.0)), for: [.normal])
@@ -255,7 +255,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
         }
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     @objc private func cloudButtonPressed() {
         if let _ = self.presentationInterfaceState?.renderedPeer?.peer as? TelegramSecretChat {
             return
@@ -417,7 +417,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
             self.deleteButton.isEnabled = false
             self.reportButton.isEnabled = false
             self.forwardButton.isImplicitlyDisabled = !actions.options.contains(.forward)
-            // MARK: Swiftgram
+            // MARK: VexGram
             self.cloudButton.isImplicitlyDisabled = self.forwardButton.isImplicitlyDisabled
             self.forwardHideNamesButton.isImplicitlyDisabled = self.forwardButton.isImplicitlyDisabled
             
@@ -459,7 +459,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
             self.tagEditButton.isHidden = true
             self.tagButton.isHidden = true
             self.tagEditButton.isHidden = true
-            // MARK: Swiftgram
+            // MARK: VexGram
             self.cloudButton.isImplicitlyDisabled = self.forwardButton.isImplicitlyDisabled
             self.forwardHideNamesButton.isImplicitlyDisabled = self.forwardButton.isImplicitlyDisabled
         }
@@ -536,7 +536,7 @@ public final class ChatMessageSelectionInputPanelNode: ChatInputPanelNode {
             }
         }
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         reportButton.isHidden = true
         buttons = [
             self.deleteButton,

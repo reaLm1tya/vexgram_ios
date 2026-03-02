@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import Display
@@ -896,7 +896,7 @@ public class VideoMessageCameraScreen: ViewController {
             self.previewContainerView.addSubview(self.previewContainerContentView)
                         
             let isDualCameraEnabled = Camera.isDualCameraSupported(forRoundVideo: true)
-            // MARK: Swiftgram
+            // MARK: VexGram
             let isFrontPosition = !SGSimpleSettings.shared.startTelescopeWithRearCam
             
             self.mainPreviewView = CameraSimplePreviewView(frame: .zero, main: true, roundVideo: true)

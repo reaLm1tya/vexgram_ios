@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import SGLogging
 import SGSimpleSettings
 import SGDebugUI
@@ -49,7 +49,7 @@ private final class DebugControllerArguments {
 }
 
 private enum DebugControllerSection: Int32 {
-    case swiftgram
+    case VexGram
     case sticker
     case logs
     case logging
@@ -124,7 +124,7 @@ private enum DebugControllerEntry: ItemListNodeEntry {
     var section: ItemListSectionId {
         switch self {
         case .sendSGLogs, .SGDebug:
-            return DebugControllerSection.swiftgram.rawValue
+            return DebugControllerSection.VexGram.rawValue
         case .testStickerImport:
             return DebugControllerSection.sticker.rawValue
         case .sendLogs, .sendOneLog, .sendShareLogs, .sendGroupCallLogs, .sendStorageStats, .sendNotificationLogs, .sendCriticalLogs, .sendAllLogs:
@@ -152,7 +152,7 @@ private enum DebugControllerEntry: ItemListNodeEntry {
     
     var stableId: Int {
         switch self {
-        // MARK: Swiftgram
+        // MARK: VexGram
         case .SGDebug:
             return -110
         case .sendSGLogs:
@@ -280,7 +280,7 @@ private enum DebugControllerEntry: ItemListNodeEntry {
         let arguments = arguments as! DebugControllerArguments
         switch self {
         case .SGDebug:
-            return ItemListDisclosureItem(presentationData: presentationData, title: "Swiftgram Debug", label: "", sectionId: self.section, style: .blocks, action: {
+            return ItemListDisclosureItem(presentationData: presentationData, title: "VexGram Debug", label: "", sectionId: self.section, style: .blocks, action: {
                 guard let context = arguments.context else {
                     return
                 }
@@ -385,17 +385,17 @@ private enum DebugControllerEntry: ItemListNodeEntry {
                     arguments.presentController(actionSheet, nil)
                 })
             })
-        // MARK: Swiftgram
+        // MARK: VexGram
         case .sendOneLog, .sendSGLogs:
             var title = "Send Latest Logs (Up to 4 MB)"
             var logCollectionSignal: Signal<[(String, String)], NoError> = Logger.shared.collectLogs()
             var fileName = "Log-iOS-Short.txt"
             var appName = "Telegram"
             if case .sendSGLogs(_) = self {
-                title = "Send Swiftgram Logs"
+                title = "Send VexGram Logs"
                 logCollectionSignal = SGLogger.shared.collectLogs()
-                fileName = "Log-iOS-Swiftgram.txt"
-                appName = "Swiftgram"
+                fileName = "Log-iOS-VexGram.txt"
+                appName = "VexGram"
             }
             return ItemListDisclosureItem(presentationData: presentationData, title: title, label: "", sectionId: self.section, style: .blocks, action: {
                 let _ = (logCollectionSignal
@@ -1436,7 +1436,7 @@ private func debugControllerEntries(sharedContext: SharedAccountContext, present
 
     let isMainApp = sharedContext.applicationBindings.isMainApp
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     entries.append(.SGDebug(presentationData.theme))
     entries.append(.sendSGLogs(presentationData.theme))
     

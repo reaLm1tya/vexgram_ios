@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import Postbox
 import TelegramApi
 import SwiftSignalKit
@@ -29,7 +29,7 @@ extension ContentSettings {
                 addContentRestrictionReasons = addContentRestrictionReasonsData
             }
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         reasons += appConfiguration.sgWebSettings.user.expandedContentReasons()
         self.init(ignoreContentRestrictionReasons: Set(reasons), addContentRestrictionReasons: addContentRestrictionReasons, appConfiguration: appConfiguration)
     }

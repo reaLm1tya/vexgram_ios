@@ -1,4 +1,4 @@
-load("@bazel_skylib//rules:common_settings.bzl",
+﻿load("@bazel_skylib//rules:common_settings.bzl",
     "bool_flag",
 )
 
@@ -250,7 +250,7 @@ filegroup(
     name = "AppStringResources",
     srcs = [
         "Telegram-iOS/en.lproj/Localizable.strings",
-        "//Swiftgram/SGStrings:SGLocalizableStrings",
+        "//VexGram/SGStrings:SGLocalizableStrings",
     ] + [
         "{}.lproj/Localizable.strings".format(language) for language in empty_languages
     ]
@@ -260,7 +260,7 @@ filegroup(
     name = "WatchAppStringResources",
     srcs = glob([
         "Telegram-iOS/*.lproj/Localizable.strings",
-    ], exclude = ["Telegram-iOS/*.lproj/**/.*"]) + ["//Swiftgram/SGStrings:SGLocalizableStrings"],
+    ], exclude = ["Telegram-iOS/*.lproj/**/.*"]) + ["//VexGram/SGStrings:SGLocalizableStrings"],
 )
 
 filegroup(
@@ -319,7 +319,7 @@ filegroup(
     ]),
 )
 
-# MARK: Swiftgram alternative icons
+# MARK: VexGram alternative icons
 alternate_icon_folders = [
     "SGDefault",
     "SGBlack",
@@ -359,7 +359,7 @@ objc_library(
     ],
 )
 
-SGRESOURCES = ["//Swiftgram/SGSettingsUI:SGUIAssets"]
+SGRESOURCES = ["//VexGram/SGSettingsUI:SGUIAssets"]
 
 swift_library(
     name = "Lib",
@@ -523,7 +523,7 @@ associated_domains_fragment = "" if telegram_bundle_id not in official_bundle_id
     <string>applinks:telegram.me</string>
     <string>applinks:t.me</string>
     <string>applinks:*.t.me</string>
-    <string>applinks:swiftgram.app</string>
+    <string>applinks:VexGram.app</string>
 </array>
 """
 
@@ -672,7 +672,7 @@ plist_fragment(
     template =
     """
     <key>CFBundleDisplayName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     """
 )
 
@@ -720,7 +720,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.watchkitapp.watchkitextension</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>WKExtensionDelegateClassName</key>
@@ -740,7 +740,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.watchkitapp</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>
@@ -1184,7 +1184,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.Share</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1276,7 +1276,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.NotificationContent</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1383,7 +1383,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.Widget</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1496,7 +1496,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.SiriIntents</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1617,8 +1617,8 @@ ios_extension(
     ],
 )
 
-# MARK: Swiftgram
-# TODO(swiftgram): Localize CFBundleDisplayName
+# MARK: VexGram
+# TODO(VexGram): Localize CFBundleDisplayName
 plist_fragment(
     name = "SGActionRequestHandlerInfoPlist",
     extension = "plist",
@@ -1629,9 +1629,9 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.SGActionRequestHandler</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundleDisplayName</key>
-    <string>Open in Swiftgram</string>
+    <string>Open in VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
 	<key>NSExtension</key>
@@ -1674,7 +1674,7 @@ plist_fragment(
     )
 )
 
-# TODO(swiftgram): Proper icon
+# TODO(VexGram): Proper icon
 filegroup(
     name = "SGActionRequestHandlerAssets",
     srcs = glob(["SGActionRequestHandler/Media.xcassets/**"]),
@@ -1768,7 +1768,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.BroadcastUpload</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1862,7 +1862,7 @@ plist_fragment(
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}.NotificationService</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>NSExtension</key>
@@ -1929,11 +1929,11 @@ plist_fragment(
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
     <key>CFBundleDisplayName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundleIdentifier</key>
     <string>{telegram_bundle_id}</string>
     <key>CFBundleName</key>
-    <string>Swiftgram</string>
+    <string>VexGram</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>
@@ -1986,17 +1986,17 @@ plist_fragment(
     <key>NSCameraUsageDescription</key>
     <string>We need this so that you can take and share photos and videos.</string>
     <key>NSContactsUsageDescription</key>
-    <string>Swiftgram stores your contacts heavily encrypted in the Telegram cloud to let you connect with your friends across all your devices.</string>
+    <string>VexGram stores your contacts heavily encrypted in the Telegram cloud to let you connect with your friends across all your devices.</string>
     <key>NSFaceIDUsageDescription</key>
     <string>You can use Face ID to unlock the app.</string>
     <key>NSLocationAlwaysUsageDescription</key>
-    <string>When you send your location to your friends, Swiftgram needs access to show them a map. You also need this to send locations from an Apple Watch.</string>
+    <string>When you send your location to your friends, VexGram needs access to show them a map. You also need this to send locations from an Apple Watch.</string>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>When you send your location to your friends, Swiftgram needs access to show them a map.</string>
+    <string>When you send your location to your friends, VexGram needs access to show them a map.</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>We need this so that you can record and share voice messages and videos with sound.</string>
     <key>NSMotionUsageDescription</key>
-    <string>When you send your location to your friends, Swiftgram needs access to show them a map.</string>
+    <string>When you send your location to your friends, VexGram needs access to show them a map.</string>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>We need this so that you can share photos and videos from your photo library.</string>
     <key>NSPhotoLibraryUsageDescription</key>
@@ -2103,7 +2103,7 @@ xcode_provisioning_profile(
 )
 
 ios_application(
-    name = "Swiftgram",
+    name = "VexGram",
     bundle_id = "{telegram_bundle_id}".format(
         telegram_bundle_id = telegram_bundle_id,
     ),
@@ -2140,12 +2140,12 @@ ios_application(
     strings = [
         ":AppStringResources",
     ],
-    # MARK: Swiftgram
-    settings_bundle = "//Swiftgram/SGSettingsBundle:SGSettingsBundle",
+    # MARK: VexGram
+    settings_bundle = "//VexGram/SGSettingsBundle:SGSettingsBundle",
     extensions = select({
         ":disableExtensionsSetting": [],
         "//conditions:default": [
-            # ":SGActionRequestHandler", # UX sucks https://t.me/swiftgramchat/7335
+            # ":SGActionRequestHandler", # UX sucks https://t.me/VexGramchat/7335
             ":ShareExtension",
             ":NotificationContentExtension",
             ":NotificationServiceExtension" + notificationServiceExtensionVersion,
@@ -2169,11 +2169,11 @@ xcodeproj(
     name = "Telegram_xcodeproj",
     build_mode = "bazel",
     bazel_path = telegram_bazel_path,
-    project_name = "Swiftgram",
+    project_name = "VexGram",
     tags = ["manual"],
     top_level_targets = top_level_targets(
         labels = [
-            ":Swiftgram",
+            ":VexGram",
         ],
         target_environments = ["device", "simulator"],
     ),

@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import Display
@@ -206,7 +206,7 @@ public final class TelegramRootController: NavigationController, TelegramRootCon
         contactsController.switchToChatsController = {  [weak self] in
             self?.openChatsController(activateSearch: false)
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         if showContactsTab {
             controllers.append(contactsController)
         }

@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import ContextUI
@@ -97,7 +97,7 @@ final class PeerInfoHeaderNavigationButtonContainerNode: SparseNode {
                 let buttonFrame = CGRect(origin: CGPoint(x: nextButtonOrigin, y: buttonY), size: buttonSize)
                 
                 nextButtonOrigin += buttonSize.width + 4.0
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if case .back = spec.key {
                     if buttonNode.canBeExpanded {
                         nextButtonOrigin += buttonNode.textNode.bounds.size.width
@@ -154,7 +154,7 @@ final class PeerInfoHeaderNavigationButtonContainerNode: SparseNode {
                     }
                     let buttonFrame = CGRect(origin: CGPoint(x: nextButtonOrigin, y: buttonY), size: buttonSize)
                     nextButtonOrigin += buttonSize.width + 4.0
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     if case .back = spec.key {
                         if buttonNode.canBeExpanded {
                             nextButtonOrigin += buttonNode.textNode.bounds.size.width

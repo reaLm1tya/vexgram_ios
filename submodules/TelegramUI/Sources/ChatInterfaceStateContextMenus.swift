@@ -1,4 +1,4 @@
-import SGStrings
+﻿import SGStrings
 import SGSimpleSettings
 import PeerInfoUI
 import Foundation
@@ -484,7 +484,7 @@ func contextMenuForChatPresentationInterfaceState(chatPresentationInterfaceState
     if case .standard(.embedded) = chatPresentationInterfaceState.mode {
         isEmbeddedMode = true
     }
-    // MARK: Swiftgram
+    // MARK: VexGram
     var canReveal = false
     if !chatPresentationInterfaceState.copyProtectionEnabled {
         outer: for message in messages {
@@ -1773,7 +1773,7 @@ func contextMenuForChatPresentationInterfaceState(chatPresentationInterfaceState
             if let user = message.author as? TelegramUser {
                 if (user.id != context.account.peerId) && hasRestrictPermission {
                     let banDisposables = DisposableDict<PeerId>()
-                    // TODO(swiftgram): Check is user an admin?
+                    // TODO(VexGram): Check is user an admin?
                     let action: ContextMenuItem = .action(ContextMenuActionItem(text: chatPresentationInterfaceState.strings.Conversation_ContextMenuBan, icon: { theme in
                         return generateTintedImage(image: UIImage(bundleImageName: "Chat/Context Menu/Restrict"), color: theme.actionSheet.primaryTextColor)
                     }, action: { _, f in
@@ -1923,7 +1923,7 @@ func contextMenuForChatPresentationInterfaceState(chatPresentationInterfaceState
         if !isPinnedMessages, !isReplyThreadHead, data.canSelect {
             sgActionsIndex = actions.count
             var didAddSeparator = false
-            // MARK: Swiftgram
+            // MARK: VexGram
             if let authorId = message.author?.id {
                 let action: ContextMenuItem = .action(ContextMenuActionItem(text: i18n("ContextMenu.SelectFromUser", chatPresentationInterfaceState.strings.baseLanguageCode), icon: { theme in
                     return generateTintedImage(image: UIImage(bundleImageName: "Chat/Context Menu/SelectAll"), color: theme.actionSheet.primaryTextColor)
@@ -2030,7 +2030,7 @@ func contextMenuForChatPresentationInterfaceState(chatPresentationInterfaceState
             }
         }
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         if !sgActions.isEmpty {
             if !actions.isEmpty {
                 if let sgActionsIndex = sgActionsIndex {
@@ -2048,8 +2048,8 @@ func contextMenuForChatPresentationInterfaceState(chatPresentationInterfaceState
             })), at: 0)
             sgActions.insert(.separator, at: 1)
             
-            let swiftgramSubMenu: ContextMenuItem = .action(ContextMenuActionItem(text: "Swiftgram", icon: { theme in
-                return generateTintedImage(image: UIImage(bundleImageName: "SwiftgramContextMenu"), color: theme.actionSheet.primaryTextColor)
+            let VexGramSubMenu: ContextMenuItem = .action(ContextMenuActionItem(text: "VexGram", icon: { theme in
+                return generateTintedImage(image: UIImage(bundleImageName: "VexGramContextMenu"), color: theme.actionSheet.primaryTextColor)
             }, action: { c, f in
                 popSGItems = { [weak c] in
                     c?.popItems()
@@ -2058,9 +2058,9 @@ func contextMenuForChatPresentationInterfaceState(chatPresentationInterfaceState
             }))
             
             if let sgActionsIndex = sgActionsIndex {
-                actions.insert(swiftgramSubMenu, at: sgActionsIndex + 1)
+                actions.insert(VexGramSubMenu, at: sgActionsIndex + 1)
             } else {
-                actions.append(swiftgramSubMenu)
+                actions.append(VexGramSubMenu)
             }
         }
         

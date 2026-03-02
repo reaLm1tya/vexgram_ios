@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import SGSimpleSettings
 import UIKit
 import AsyncDisplayKit
@@ -1481,7 +1481,7 @@ class ChatControllerNode: ASDisplayNode, ASScrollViewDelegate {
         var dismissedAccessoryPanelNode: AccessoryPanelNode?
         var dismissedInputContextPanelNode: ChatInputContextPanelNode?
         var dismissedOverlayContextPanelNode: ChatInputContextPanelNode?
-        // MARK: Swiftgram
+        // MARK: VexGram
         var inputPanelNodes = inputPanelForChatPresentationIntefaceState(self.chatPresentationInterfaceState, context: self.context, currentPanel: self.inputPanelNode, currentSecondaryPanel: self.secondaryInputPanelNode, textInputPanelNode: self.textInputPanelNode, interfaceInteraction: self.interfaceInteraction)
         if SGSimpleSettings.shared.hideChannelBottomButton {
             // We still need the panel for messages multi-select or search. Likely can break in future.

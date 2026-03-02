@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import SGActionRequestHandlerSanitizer
 import SGAPIWebSettings
 import SGLogging
@@ -834,7 +834,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
                 icons.append(PresentationAppIcon(name: "PremiumBlack", imageName: "PremiumBlack", isPremium: true))
                 
                 
-                // MARK: Swiftgram
+                // MARK: VexGram
                 icons = [
                     PresentationAppIcon(name: "SGDefault", imageName: "SGDefault", isDefault: true),
                     PresentationAppIcon(name: "SGBlack", imageName: "SGBlack"),
@@ -1194,7 +1194,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
             var network: Network?
             if let context = context {
                 network = context.context.account.network
-                // MARK: Swiftgram
+                // MARK: VexGram
                 sgDBResetIfNeeded(databasePath: context.context.sharedContext.accountManager.basePath + "/db", present: self.mainWindow?.presentNative)
             }
             
@@ -1260,7 +1260,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
                     
                     self.resetIntentsIfNeeded(context: context.context)
                     
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     updateSGWebSettingsInteractivelly(context: context.context)
                     let _ = (context.context.sharedContext.presentationData.start(next: { presentationData in
                         SGLocalizationManager.shared.downloadLocale(presentationData.strings.baseLanguageCode)
@@ -1882,7 +1882,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
              |> take(1)
              |> deliverOnMainQueue).start(next: { activeAccounts in
                 for (_, context, _) in activeAccounts.accounts {
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     updateSGWebSettingsInteractivelly(context: context)
                     if onlySG {
                         continue

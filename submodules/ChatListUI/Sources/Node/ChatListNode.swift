@@ -1,4 +1,4 @@
-import SGAPIToken
+﻿import SGAPIToken
 import SGAPIWebSettings
 import Foundation
 import UIKit
@@ -132,7 +132,7 @@ public final class ChatListNodeInteraction {
         animationCache: AnimationCache,
         animationRenderer: MultiAnimationRenderer,
         activateSearch: @escaping () -> Void,
-        // MARK: Swiftgram
+        // MARK: VexGram
         openSGAnnouncement: @escaping (String, String, Bool, Bool) -> Void = { _, _, _, _ in },
         peerSelected: @escaping (EnginePeer, EnginePeer?, Int64?, ChatListNodeEntryPromoInfo?) -> Void,
         disabledPeerSelected: @escaping (EnginePeer, Int64?, ChatListDisabledPeerReason) -> Void,
@@ -755,7 +755,7 @@ private func mappedInsertEntries(context: AccountContext, nodeInteraction: ChatL
                         case .setupBirthday:
                             nodeInteraction?.openBirthdaySetup()
                         case let .birthdayPremiumGift(_, birthdays):
-                            // TODO(swiftgram): Open user's profile instead of gift
+                            // TODO(VexGram): Open user's profile instead of gift
                             nodeInteraction?.openPremiumGift(birthdays)
                         case .reviewLogin:
                             break
@@ -1349,7 +1349,7 @@ public final class ChatListNode: ListView {
     
     public var startedScrollingAtUpperBound: Bool = false
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     public var getNavigationController: (()-> NavigationController?)?
     
     private let autoSetReady: Bool
@@ -2050,11 +2050,11 @@ public final class ChatListNode: ListView {
                 } else if suggestions.contains(.setupBirthday) && birthday == nil {
                     return .single(.setupBirthday)
                 } else if suggestions.contains(.xmasPremiumGift) {
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     if ({ return true }()) { return .single(nil) }
                     return .single(.xmasPremiumGift)
                 } else if suggestions.contains(.annualPremium) || suggestions.contains(.upgradePremium) || suggestions.contains(.restorePremium), let inAppPurchaseManager = context.inAppPurchaseManager {
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     if ({ return true }()) { return .single(nil) }
                     return inAppPurchaseManager.availableProducts
                     |> map { products -> ChatListNotice? in

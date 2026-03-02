@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import SGSimpleSettings
 
 import Foundation
@@ -378,7 +378,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
                     strongSelf.chatListDisplayNode.willScrollToTop()
                     strongSelf.chatListDisplayNode.effectiveContainerNode.currentItemNode.scrollToPosition(.top(adjustForTempInset: false))
                 case let .known(offset):
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     let sgAllChatsHiddden = SGSimpleSettings.shared.allChatsHidden
                     var mainContainerNode_availableFilters = strongSelf.chatListDisplayNode.mainContainerNode.availableFilters
                     if sgAllChatsHiddden {
@@ -389,7 +389,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
                     if offset <= ChatListNavigationBar.searchScrollHeight + 1.0 && strongSelf.chatListDisplayNode.inlineStackContainerNode != nil {
                         strongSelf.setInlineChatList(location: nil)
                     } else if offset <= ChatListNavigationBar.searchScrollHeight + 1.0 && !isFirstFilter {
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         var effectiveContainerNode_availableFilters = strongSelf.chatListDisplayNode.mainContainerNode.availableFilters
                         if sgAllChatsHiddden {
                             effectiveContainerNode_availableFilters.removeAll { $0 == .all }
@@ -752,16 +752,16 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
                 }
                 if force {
                     strongSelf.tabContainerNode.cancelAnimations()
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     strongSelf.chatListDisplayNode.inlineTabContainerNode.cancelAnimations()
                     strongSelf.chatListDisplayNode.appleStyleTabContainerNode.cancelAnimations()
                 }
                 strongSelf.tabContainerNode.update(size: CGSize(width: layout.size.width, height: 46.0), sideInset: layout.safeInsets.left, filters: tabContainerData.0, selectedFilter: filter, isReordering: strongSelf.chatListDisplayNode.isReorderingFilters || (strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing && !strongSelf.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing, canReorderAllChats: strongSelf.isPremium, filtersLimit: tabContainerData.2, transitionFraction: fraction, presentationData: strongSelf.presentationData, transition: transition)
-                // MARK: Swiftgram
+                // MARK: VexGram
                 strongSelf.chatListDisplayNode.inlineTabContainerNode.update(size: CGSize(width: layout.size.width, height: 46.0 * (SGSimpleSettings.shared.hideTabBar ? 3.0 : 1.0)), sideInset: layout.safeInsets.left, filters: tabContainerData.0, selectedFilter: filter, isReordering: strongSelf.chatListDisplayNode.isReorderingFilters || (strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing && !strongSelf.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing, canReorderAllChats: strongSelf.isPremium, filtersLimit: tabContainerData.2, transitionFraction: fraction, presentationData: strongSelf.presentationData, transition: transition)
                 strongSelf.chatListDisplayNode.appleStyleTabContainerNode.update(size: CGSize(width: layout.size.width, height: 40.0), sideInset: layout.safeInsets.left, filters: tabContainerData.0, selectedFilter: filter, isReordering: strongSelf.chatListDisplayNode.isReorderingFilters || (strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing && !strongSelf.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing, /* canReorderAllChats: strongSelf.isPremium, filtersLimit: tabContainerData.2,*/ transitionFraction: fraction, presentationData: strongSelf.presentationData, transition: transition)
                 
-                // MARK: Swiftgram
+                // MARK: VexGram
                 let switchingToFilterId: Int32
                 switch (filter) {
                     case let .filter(filterId):
@@ -2017,7 +2017,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
             if self.previewing {
                 self.storiesReady.set(.single(true))
             } else {
-                // MARK: Swiftgram
+                // MARK: VexGram
                 let hideStoriesSignal = self.context.account.postbox.preferencesView(keys: [ApplicationSpecificPreferencesKeys.SGUISettings])
                 |> map { view -> Bool in
                     let settings: SGUISettings = view.values[ApplicationSpecificPreferencesKeys.SGUISettings]?.get(SGUISettings.self) ?? .default
@@ -3324,7 +3324,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
         
         if !skipTabContainerUpdate {
             self.tabContainerNode.update(size: CGSize(width: layout.size.width, height: 46.0), sideInset: layout.safeInsets.left, filters: self.tabContainerData?.0 ?? [], selectedFilter: self.chatListDisplayNode.mainContainerNode.currentItemFilter, isReordering: self.chatListDisplayNode.isReorderingFilters || (self.chatListDisplayNode.effectiveContainerNode.currentItemNode.currentState.editing && !self.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: self.chatListDisplayNode.effectiveContainerNode.currentItemNode.currentState.editing, canReorderAllChats: self.isPremium, filtersLimit: self.tabContainerData?.2, transitionFraction: self.chatListDisplayNode.effectiveContainerNode.transitionFraction, presentationData: self.presentationData, transition: .animated(duration: 0.4, curve: .spring))
-            // MARK: Swiftgram
+            // MARK: VexGram
             self.chatListDisplayNode.inlineTabContainerNode.update(size: CGSize(width: layout.size.width, height: 46.0 * (SGSimpleSettings.shared.hideTabBar ? 3.0 : 1.0)), sideInset: layout.safeInsets.left, filters: self.tabContainerData?.0 ?? [], selectedFilter: self.chatListDisplayNode.mainContainerNode.currentItemFilter, isReordering: self.chatListDisplayNode.isReorderingFilters || (self.chatListDisplayNode.effectiveContainerNode.currentItemNode.currentState.editing && !self.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: self.chatListDisplayNode.effectiveContainerNode.currentItemNode.currentState.editing, canReorderAllChats: self.isPremium, filtersLimit: self.tabContainerData?.2, transitionFraction: self.chatListDisplayNode.effectiveContainerNode.transitionFraction, presentationData: self.presentationData, transition: .animated(duration: 0.4, curve: .spring))
             self.chatListDisplayNode.appleStyleTabContainerNode.update(size: CGSize(width: layout.size.width, height: 40.0), sideInset: layout.safeInsets.left, filters: self.tabContainerData?.0 ?? [], selectedFilter: self.chatListDisplayNode.mainContainerNode.currentItemFilter, isReordering: self.chatListDisplayNode.isReorderingFilters || (self.chatListDisplayNode.effectiveContainerNode.currentItemNode.currentState.editing && !self.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: self.chatListDisplayNode.effectiveContainerNode.currentItemNode.currentState.editing, /*canReorderAllChats: self.isPremium, filtersLimit: self.tabContainerData?.2,*/ transitionFraction: self.chatListDisplayNode.effectiveContainerNode.transitionFraction, presentationData: self.presentationData, transition: .animated(duration: 0.4, curve: .spring))
         }
@@ -3336,7 +3336,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
         }
         self.tabContainerNode.isHidden = showFoldersAtBottom
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         if showFoldersAtBottom {
             let bottomFoldersStyle = SGSimpleSettings.shared.bottomTabStyle
             self.chatListDisplayNode.inlineTabContainerNode.isHidden = SGSimpleSettings.BottomTabStyleValues.telegram.rawValue != bottomFoldersStyle
@@ -3438,7 +3438,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
         }
         
         var reorderedFilterIdsValue: [Int32]?
-        // MARK: Swiftgram
+        // MARK: VexGram
         let reorderedFilterIds: [Int32]?
         if !self.chatListDisplayNode.inlineTabContainerNode.isHidden {
             reorderedFilterIds = self.chatListDisplayNode.inlineTabContainerNode.reorderedFilterIds
@@ -3768,7 +3768,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
         let filterItems = chatListFilterItems(context: self.context)
         var notifiedFirstUpdate = false
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         let experimentalUISettingsKey: ValueBoxKey = ApplicationSpecificSharedDataKeys.experimentalUISettings
         let displayTabsAtBottomSignal = self.context.sharedContext.accountManager.sharedData(keys: Set([experimentalUISettingsKey]))
         |> map { sharedData -> Bool in
@@ -3828,7 +3828,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
                 case let .filter(id, _, _, _):
                     firstItemEntryId = .filter(id)
             }
-            // MARK: Swiftgram
+            // MARK: VexGram
             if !strongSelf.initializedFilters && SGSimpleSettings.shared.rememberLastFolder {
                 if let lastFolder = SGSimpleSettings.shared.lastAccountFolders["\(strongSelf.context.account.peerId.id._internalGetInt64Value())"]{
                     firstItemEntryId = lastFolder == -1 ? .all : .filter(lastFolder)
@@ -3907,7 +3907,7 @@ public class ChatListControllerImpl: TelegramBaseController, ChatListController 
                     (strongSelf.parent as? TabBarController)?.updateLayout(transition: transition)
                 } else {
                     strongSelf.tabContainerNode.update(size: CGSize(width: layout.size.width, height: 46.0), sideInset: layout.safeInsets.left, filters: resolvedItems, selectedFilter: selectedEntryId, isReordering: strongSelf.chatListDisplayNode.isReorderingFilters || (strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing && !strongSelf.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing, canReorderAllChats: strongSelf.isPremium, filtersLimit: filtersLimit, transitionFraction: strongSelf.chatListDisplayNode.mainContainerNode.transitionFraction, presentationData: strongSelf.presentationData, transition: .animated(duration: 0.4, curve: .spring))
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     strongSelf.chatListDisplayNode.inlineTabContainerNode.update(size: CGSize(width: layout.size.width, height: 46.0 * (SGSimpleSettings.shared.hideTabBar ? 3.0 : 1.0)), sideInset: layout.safeInsets.left, filters: resolvedItems, selectedFilter: selectedEntryId, isReordering: strongSelf.chatListDisplayNode.isReorderingFilters || (strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing && !strongSelf.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing, canReorderAllChats: strongSelf.isPremium, filtersLimit: filtersLimit, transitionFraction: strongSelf.chatListDisplayNode.mainContainerNode.transitionFraction, presentationData: strongSelf.presentationData, transition: .animated(duration: 0.4, curve: .spring))
                     strongSelf.chatListDisplayNode.appleStyleTabContainerNode.update(size: CGSize(width: layout.size.width, height: 40.0), sideInset: layout.safeInsets.left, filters: resolvedItems, selectedFilter: selectedEntryId, isReordering: strongSelf.chatListDisplayNode.isReorderingFilters || (strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing && !strongSelf.chatListDisplayNode.didBeginSelectingChatsWhileEditing), isEditing: strongSelf.chatListDisplayNode.mainContainerNode.currentItemNode.currentState.editing, /*canReorderAllChats: strongSelf.isPremium, filtersLimit: filtersLimit,*/ transitionFraction: strongSelf.chatListDisplayNode.mainContainerNode.transitionFraction, presentationData: strongSelf.presentationData, transition: .animated(duration: 0.4, curve: .spring))
                 }
@@ -6315,7 +6315,7 @@ private final class ChatListLocationContext {
             return lhs == rhs
         })
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         let hideStoriesSignal = context.account.postbox.preferencesView(keys: [ApplicationSpecificPreferencesKeys.SGUISettings])
         |> map { view -> Bool in
             let settings: SGUISettings = view.values[ApplicationSpecificPreferencesKeys.SGUISettings]?.get(SGUISettings.self) ?? .default
@@ -6756,7 +6756,7 @@ private final class ChatListLocationContext {
                     self.storyButton = nil
                 }
                 
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if SGSimpleSettings.shared.hideTabBar {
                     self.settingsButton = AnyComponentWithIdentity(id: "settings", component: AnyComponent(NavigationButtonComponent(
                         content: .more,
@@ -6994,7 +6994,7 @@ private final class ChatListLocationContext {
     }
 }
 
-// MARK: Swiftgram
+// MARK: VexGram
 extension ChatListControllerImpl {
 
     @objc fileprivate func settingsPressed() {

@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import AsyncDisplayKit
@@ -1300,7 +1300,7 @@ public class ChatMessageDateAndStatusNode: ASDisplayNode {
 }
 
 public func shouldDisplayInlineDateReactions(message: Message, isPremium: Bool, forceInline: Bool) -> Bool {
-    // MARK: Swiftgram
+    // MARK: VexGram
     // With 10.13 it now hides reactions in favor of message effect badge
     return SGSimpleSettings.shared.hideReactions
 }

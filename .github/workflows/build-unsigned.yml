@@ -1,0 +1,69 @@
+# Сборка VexGram.ipa с подписью Xcode (managed).
+# Не требует папки fake-codesigning — можно запустить сразу после пуша в GitHub.
+# Для подписанного релиза используйте workflow "CI" и добавьте build-system/fake-codesigning.
+name: Build VexGram (Xcode managed)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-13
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set active Xcode path
+        run: |
+          if [ -d /Applications/Xcode_15.2.app ]; then
+            sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+          else
+            echo "Using default Xcode"
+            xcode-select -p
+          fi
+
+      - name: Create canonical source directory
+        run: |
+          set -x
+          sudo mkdir -p /Users/Shared
+          cp -R $GITHUB_WORKSPACE /Users/Shared/
+          mv /Users/Shared/$(basename $GITHUB_WORKSPACE) /Users/Shared/telegram-ios
+
+      - name: Build the App
+        run: |
+          set -x
+          SOURCE_DIR=/Users/Shared/telegram-ios
+          BAZEL_USER_ROOT="/private/var/tmp/_bazel_containerhost"
+          cd $SOURCE_DIR
+
+          BUILD_NUMBER_OFFSET="$(cat build_number_offset)"
+          export APP_VERSION=$(cat versions.json | python3 -c 'import json,sys;obj=json.load(sys.stdin);print(obj["app"]);')
+          export COMMIT_COUNT=$(git rev-list --count HEAD)
+          export COMMIT_COUNT="$(($COMMIT_COUNT+$BUILD_NUMBER_OFFSET))"
+          export BUILD_NUMBER="$COMMIT_COUNT"
+          echo "BUILD_NUMBER=$BUILD_NUMBER" >> $GITHUB_ENV
+          echo "APP_VERSION=$APP_VERSION" >> $GITHUB_ENV
+
+          python3 -u build-system/Make/Make.py \
+            --bazelUserRoot="$BAZEL_USER_ROOT" \
+            build \
+            --configurationPath="build-system/appstore-configuration.json" \
+            --xcodeManagedCodesigning \
+            --configuration=release_arm64 \
+            --buildNumber="$BUILD_NUMBER"
+
+          OUTPUT_PATH="build/artifacts"
+          rm -rf "$OUTPUT_PATH"
+          mkdir -p "$OUTPUT_PATH"
+          for f in bazel-out/ios_arm64-opt-ios-arm64-min*/bin/Telegram/VexGram.ipa bazel-out/applebin_ios-ios_arm*-opt-ST-*/bin/Telegram/VexGram.ipa; do
+            [ -f "$f" ] && cp "$f" $OUTPUT_PATH/ && break
+          done
+
+      - name: Upload VexGram.ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: VexGram-ipa
+          path: /Users/Shared/telegram-ios/build/artifacts/VexGram.ipa

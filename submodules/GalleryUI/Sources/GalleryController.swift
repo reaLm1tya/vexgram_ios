@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import QuickLook
@@ -506,7 +506,7 @@ public struct GalleryConfiguration {
     }
     
     static func with(appConfiguration: AppConfiguration) -> GalleryConfiguration {
-        // MARK: Swiftgram
+        // MARK: VexGram
         if appConfiguration.sgWebSettings.global.ytPip {
             return GalleryConfiguration(youtubePictureInPictureEnabled: true)
         }

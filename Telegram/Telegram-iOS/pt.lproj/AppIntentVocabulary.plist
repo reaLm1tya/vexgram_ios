@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -9,7 +9,7 @@
 			<string>INSendMessageIntent</string>
 			<key>IntentExamples</key>
 			<array>
-				<string>Enviar uma mensagem no Swiftgram para a Alice dizendo que eu chegarei lá em 15 minutos</string>
+				<string>Enviar uma mensagem no VexGram para a Alice dizendo que eu chegarei lá em 15 minutos</string>
 			</array>
 		</dict>
 	</array>

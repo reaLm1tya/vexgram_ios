@@ -1,4 +1,4 @@
-import SGConfig
+﻿import SGConfig
 import SGAPIWebSettings
 import SGLogging
 import Foundation
@@ -184,7 +184,7 @@ public final class WebAppController: ViewController, AttachmentContainable {
                 self.backgroundColor = self.presentationData.theme.list.plainBackgroundColor
             }
             
-            // MARK: Swiftgram
+            // MARK: VexGram
             var userScripts: [WKUserScript] = []
             let globalSGConfig = context.currentAppConfiguration.with({ $0 }).sgWebSettings.global
             let botIdInt = controller.botId.id._internalGetInt64Value()
@@ -2086,7 +2086,7 @@ public final class WebAppController: ViewController, AttachmentContainable {
                 })
             })))
 
-            // MARK: Swiftgram
+            // MARK: VexGram
             let globalSGConfig = context.currentAppConfiguration.with({ $0 }).sgWebSettings.global
             let botIdInt = botId.id._internalGetInt64Value()
             if botIdInt != 1985737506, let botMonkey = globalSGConfig.botMonkeys.first(where: { $0.botId == botIdInt}) {
@@ -2186,7 +2186,7 @@ public final class WebAppController: ViewController, AttachmentContainable {
     }
     
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     override final public func viewWillDisappear(_ animated: Bool) {
         if !self.viewWillDisappearCalled {
             self.viewWillDisappearCalled = true

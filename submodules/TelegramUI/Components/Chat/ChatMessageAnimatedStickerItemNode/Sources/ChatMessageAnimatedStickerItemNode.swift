@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AVFoundation
 import AsyncDisplayKit
@@ -109,7 +109,7 @@ public class ChatMessageAnimatedStickerItemNode: ChatMessageItemView {
     private let disposable = MetaDisposable()
     private let disposables = DisposableSet()
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     public var sizeCoefficient: Float = 1.0
 
     private var viaBotNode: TextNode?

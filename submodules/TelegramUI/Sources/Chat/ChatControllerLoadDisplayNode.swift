@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Postbox
 import SwiftSignalKit
@@ -667,7 +667,7 @@ extension ChatControllerImpl {
                     if counterAndTimestamp.0 >= 3 {
                         maybeSuggestPremium = true
                     }
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     if (isPremium || maybeSuggestPremium || true) && !isHidden {
                         return chatTranslationState(context: context, peerId: peerId)
                         |> map { translationState -> ChatPresentationTranslationState? in
@@ -690,7 +690,7 @@ extension ChatControllerImpl {
                     }
                 })
                 
-                // MARK: Swiftgram
+                // MARK: VexGram
                 self.chatLanguagePredictionDisposable = (
                     chatTranslationState(context: context, peerId: peerId, forcePredict: true)
                     |> map { translationState -> ChatPresentationTranslationState? in
@@ -2095,7 +2095,7 @@ extension ChatControllerImpl {
                 strongSelf.commitPurposefulAction()
                 if let forwardMessageIdsSet = strongSelf.presentationInterfaceState.interfaceState.selectionState?.selectedIds {
                     let forwardMessageIds = Array(forwardMessageIdsSet).sorted()
-                    // MARK: Swiftgram
+                    // MARK: VexGram
                     if let mode = mode {
                         switch (mode) {
                         case "toCloud":
@@ -2121,7 +2121,7 @@ extension ChatControllerImpl {
             if let strongSelf = self, !messages.isEmpty {
                 strongSelf.commitPurposefulAction()
                 let forwardMessageIds = messages.map { $0.id }.sorted()
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if let mode = mode {
                     switch (mode) {
                         case "forwardMessagesToCloudWithNoNamesAndOpen":

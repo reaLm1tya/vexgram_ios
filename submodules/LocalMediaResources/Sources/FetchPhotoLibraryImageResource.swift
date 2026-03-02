@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import Photos
@@ -122,7 +122,7 @@ public func fetchPhotoLibraryResource(localIdentifier: String, width: Int32?, he
             if let width, let height {
                 size = CGSize(width: CGFloat(width), height: CGFloat(height))
             } else {
-                // MARK: Swiftgram
+                // MARK: VexGram
                 size = SGSimpleSettings.shared.sendLargePhotos ? CGSize(width: 2560.0, height: 2560.0) : CGSize(width: 1280.0, height: 1280.0)
             }
             

@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import AsyncDisplayKit
@@ -2406,7 +2406,7 @@ public class PremiumBoostLevelsScreen: ViewController {
                                     title: presentationData.strings.ChannelBoost_MoreBoosts_Title,
                                     text: presentationData.strings.ChannelBoost_MoreBoosts_Text(peer.compactDisplayTitle, "\(premiumConfiguration.boostsPerGiftCount)").string,
                                     actions: [
-                                        // MARK: Swiftgram
+                                        // MARK: VexGram
                                         /*TextAlertAction(type: .defaultAction, title: presentationData.strings.ChannelBoost_MoreBoosts_Gift, action: { [weak controller] in
                                             if let navigationController = controller?.navigationController {
                                                 controller?.dismiss(animated: true, completion: nil)

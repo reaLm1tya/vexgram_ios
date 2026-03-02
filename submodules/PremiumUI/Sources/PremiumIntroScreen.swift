@@ -1,4 +1,4 @@
-import SGStrings
+﻿import SGStrings
 import Foundation
 import UIKit
 import Display
@@ -3010,7 +3010,7 @@ private final class PremiumIntroScreenComponent: CombinedComponent {
                 return
             }
 
-            // MARK: Swiftgram
+            // MARK: VexGram
             let presentationData = self.context.sharedContext.currentPresentationData.with { $0 }
             let alertController = textAlertController(context: self.context, title: i18n("Common.OpenTelegram", presentationData.strings.baseLanguageCode), text: i18n("Common.UseTelegramForPremium", presentationData.strings.baseLanguageCode), actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})])
             self.present(alertController)

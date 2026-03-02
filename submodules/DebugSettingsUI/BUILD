@@ -1,9 +1,9 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+﻿load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 sgdeps = [
-    "//Swiftgram/SGDebugUI:SGDebugUI",
-    "//Swiftgram/SGLogging:SGLogging",
-    "//Swiftgram/SGSimpleSettings:SGSimpleSettings"
+    "//VexGram/SGDebugUI:SGDebugUI",
+    "//VexGram/SGLogging:SGLogging",
+    "//VexGram/SGSimpleSettings:SGSimpleSettings"
 ]
 
 swift_library(

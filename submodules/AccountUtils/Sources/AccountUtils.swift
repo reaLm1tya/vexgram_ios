@@ -1,14 +1,14 @@
-import Foundation
+﻿import Foundation
 import SwiftSignalKit
 import TelegramCore
 import TelegramUIPreferences
 import AccountContext
 
-// MARK: Swiftgram
-public let maximumSwiftgramNumberOfAccounts = 100
+// MARK: VexGram
+public let maximumVexGramNumberOfAccounts = 100
 public let maximumSafeNumberOfAccounts = 6
-public let maximumNumberOfAccounts = maximumSwiftgramNumberOfAccounts
-public let maximumPremiumNumberOfAccounts = maximumSwiftgramNumberOfAccounts
+public let maximumNumberOfAccounts = maximumVexGramNumberOfAccounts
+public let maximumPremiumNumberOfAccounts = maximumVexGramNumberOfAccounts
 
 public func activeAccountsAndPeers(context: AccountContext, includePrimary: Bool = false) -> Signal<((AccountContext, EnginePeer)?, [(AccountContext, EnginePeer, Int32)]), NoError> {
     let sharedContext = context.sharedContext

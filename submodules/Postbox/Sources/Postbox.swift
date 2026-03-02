@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 
 import SwiftSignalKit
 
@@ -4974,7 +4974,7 @@ public class Postbox {
 }
 
 
-// MARK: Swiftgram
+// MARK: VexGram
 extension PostboxImpl {
     func searchLocalPeerId(query: String) -> PeerId? {
         var result: PeerId? = nil

@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import AsyncDisplayKit
@@ -190,7 +190,7 @@ private final class ReplaceBoostScreenComponent: CombinedComponent {
                         }
                     },
                     tapAction: { _, _ in
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         if ({ return false }()) { giftPremium() }
                     }
                 ),

@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Postbox
 import SwiftSignalKit
@@ -169,7 +169,7 @@ public final class ChatControllerInteraction: ChatControllerInteractionProtocol 
     }
     
     public let openMessage: (Message, OpenMessageParams) -> Bool
-    // MARK: Swiftgram
+    // MARK: VexGram
     public let sgStartMessageEdit: (Message) -> Void
     public let openPeer: (EnginePeer, ChatControllerInteractionNavigateToPeer, MessageReference?, OpenPeerSource) -> Void
     public let openPeerMention: (String, Promise<Bool>?) -> Void

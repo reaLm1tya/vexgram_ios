@@ -1,4 +1,4 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+﻿load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 load(
     "@build_configuration//:variables.bzl",
@@ -6,24 +6,24 @@ load(
 )
 
 sgdeps = [
-    "//Swiftgram/SGSettingsUI:SGSettingsUI",
-    "//Swiftgram/SGConfig:SGConfig",
-    "//Swiftgram/SGAPIWebSettings:SGAPIWebSettings",
-    "//Swiftgram/SGSimpleSettings:SGSimpleSettings",
-    "//Swiftgram/SFSafariViewControllerPlus:SFSafariViewControllerPlus",
-    "//Swiftgram/SGLogging:SGLogging",
-    "//Swiftgram/SGStrings:SGStrings",
-    "//Swiftgram/SGActionRequestHandlerSanitizer:SGActionRequestHandlerSanitizer",
-    "//Swiftgram/Wrap:Wrap",
-    "//Swiftgram/SGDeviceToken:SGDeviceToken",
-    "//Swiftgram/SGDebugUI:SGDebugUI"
-    # "//Swiftgram/SGContentAnalysis:SGContentAnalysis"
+    "//VexGram/SGSettingsUI:SGSettingsUI",
+    "//VexGram/SGConfig:SGConfig",
+    "//VexGram/SGAPIWebSettings:SGAPIWebSettings",
+    "//VexGram/SGSimpleSettings:SGSimpleSettings",
+    "//VexGram/SFSafariViewControllerPlus:SFSafariViewControllerPlus",
+    "//VexGram/SGLogging:SGLogging",
+    "//VexGram/SGStrings:SGStrings",
+    "//VexGram/SGActionRequestHandlerSanitizer:SGActionRequestHandlerSanitizer",
+    "//VexGram/Wrap:Wrap",
+    "//VexGram/SGDeviceToken:SGDeviceToken",
+    "//VexGram/SGDebugUI:SGDebugUI"
+    # "//VexGram/SGContentAnalysis:SGContentAnalysis"
 ]
 
 sgsrcs = [
-    "//Swiftgram/SGDBReset:SGDBReset",
-    "//Swiftgram/SGShowMessageJson:SGShowMessageJson",
-    "//Swiftgram/ChatControllerImplExtension:ChatControllerImplExtension"
+    "//VexGram/SGDBReset:SGDBReset",
+    "//VexGram/SGShowMessageJson:SGShowMessageJson",
+    "//VexGram/ChatControllerImplExtension:ChatControllerImplExtension"
 ]
 
 filegroup(

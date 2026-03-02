@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import TelegramCore
@@ -33,7 +33,7 @@ public class PeerNameColors: Equatable {
         private let _main: UIColor
         private let _secondary: UIColor?
         private let _tertiary: UIColor?
-        // MARK: Swiftgram
+        // MARK: VexGram
         public var main: UIColor {
             let currentSaturation = SGSimpleSettings.shared.accountColorsSaturation
             if currentSaturation == 0 {
@@ -353,7 +353,7 @@ public class PeerNameColors: Equatable {
     }
 }
 
-// MARK: Swiftgram
+// MARK: VexGram
 extension UIColor {
     func withReducedSaturation(_ factor: CGFloat) -> UIColor {
         var hue: CGFloat = 0

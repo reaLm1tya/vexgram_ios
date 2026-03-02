@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import Display
@@ -51,7 +51,7 @@ public class ChatMessageStickerItemNode: ChatMessageItemView {
     public var telegramFile: TelegramMediaFile?
     private let fetchDisposable = MetaDisposable()
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     public var sizeCoefficient: Float = 1.0
     
     private var viaBotNode: TextNode?

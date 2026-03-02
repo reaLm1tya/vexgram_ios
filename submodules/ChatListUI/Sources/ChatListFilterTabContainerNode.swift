@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import AsyncDisplayKit
 import Display
@@ -306,7 +306,7 @@ private final class ItemNode: ASDisplayNode {
     }
     
     func updateLayout(height: CGFloat, transition: ContainedViewLayoutTransition) -> (width: CGFloat, shortWidth: CGFloat) {
-        // MARK: Swiftgram
+        // MARK: VexGram
         var height = height
         if SGSimpleSettings.shared.hideTabBar {
             height = 46.0
@@ -357,7 +357,7 @@ private final class ItemNode: ASDisplayNode {
     }
     
     func updateArea(size: CGSize, sideInset: CGFloat, useShortTitle: Bool, transition: ContainedViewLayoutTransition) {
-        // MARK: Swiftgram
+        // MARK: VexGram
         var size = size
         if SGSimpleSettings.shared.hideTabBar {
             size.height = 46.0
@@ -558,7 +558,7 @@ public final class ChatListFilterTabContainerNode: ASDisplayNode {
         }
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     public let inline: Bool
     private var backgroundNode: NavigationBackgroundNode? = nil
     
@@ -569,7 +569,7 @@ public final class ChatListFilterTabContainerNode: ASDisplayNode {
         self.selectedLineNode.displaysAsynchronously = false
         self.selectedLineNode.displayWithoutProcessing = true
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.inline = inline
         if self.inline {
             if let context = context {
@@ -785,7 +785,7 @@ public final class ChatListFilterTabContainerNode: ASDisplayNode {
         
         self.reorderingGesture?.isEnabled = isReordering
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         if let backgroundNode = self.backgroundNode {
             transition.updateFrame(node: backgroundNode, frame: CGRect(origin: CGPoint(), size: size))
             backgroundNode.update(size: backgroundNode.bounds.size, transition: transition)

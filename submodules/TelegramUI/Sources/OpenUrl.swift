@@ -1,4 +1,4 @@
-import SGLogging
+﻿import SGLogging
 import SGAPIWebSettings
 import SGConfig
 import SGSettingsUI
@@ -1120,7 +1120,7 @@ func openExternalUrlImpl(context: AccountContext, urlContext: OpenURLContext, ur
                                 break
                             }
                         }
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         if settings.defaultWebBrowser == "inApp" { isExceptedDomain = false}
 
                         if (settings.defaultWebBrowser == nil && !isExceptedDomain) || isTonSite {
@@ -1128,7 +1128,7 @@ func openExternalUrlImpl(context: AccountContext, urlContext: OpenURLContext, ur
                             navigationController?.pushViewController(controller)
                         } else {
                             if let window = navigationController?.view.window, !isExceptedDomain {
-                                // MARK: Swiftgram
+                                // MARK: VexGram
                                 let controller = SFSafariViewControllerPlusDidFinish(url: parsedUrl)
                                 controller.preferredBarTintColor = presentationData.theme.rootController.navigationBar.opaqueBackgroundColor
                                 controller.preferredControlTintColor = presentationData.theme.rootController.navigationBar.accentTextColor

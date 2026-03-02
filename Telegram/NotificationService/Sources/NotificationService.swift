@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UserNotifications
 import SwiftSignalKit
 import Postbox
@@ -639,7 +639,7 @@ private struct NotificationContent: CustomStringConvertible {
             }
         }
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         if self.isEmpty {
             content.title = " "
             content.threadIdentifier = "empty-notification"
@@ -2154,7 +2154,7 @@ final class NotificationService: UNNotificationServiceExtension {
     private let content = Atomic<NotificationContent?>(value: nil)
     private var contentHandler: ((UNNotificationContent) -> Void)?
     private var episode: String?
-    // MARK: Swiftgram
+    // MARK: VexGram
     private var emptyNotificationsRemoved: Bool = false
     private var notificationRemovalTries: Int32 = 0
     private let maxNotificationRemovalTries: Int32 = 30
@@ -2163,7 +2163,7 @@ final class NotificationService: UNNotificationServiceExtension {
         super.init()
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     func removeEmptyNotificationsOnce() {
         var emptyNotifications: [String] = []
         UNUserNotificationCenter.current().getDeliveredNotifications(completionHandler: { notifications in
@@ -2242,7 +2242,7 @@ final class NotificationService: UNNotificationServiceExtension {
                         strongSelf.contentHandler = nil
                         
                         if let content = content.with({ $0 }) {
-                            // MARK: Swiftgram
+                            // MARK: VexGram
                             strongSelf.removeEmptyNotificationsOnce()
                             contentHandler(content.generate())
                             if content.isEmpty {

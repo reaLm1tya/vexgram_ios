@@ -1,4 +1,4 @@
-import SGStrings
+﻿import SGStrings
 
 import Foundation
 import UIKit
@@ -593,7 +593,7 @@ public final class AuthorizationSequenceController: NavigationController, ASAuth
                 
                 if nextType == nil {
                     if let controller {
-                        // MARK: Swiftgram
+                        // MARK: VexGram
                         controller.present(standardTextAlertController(theme: AlertControllerTheme(presentationData: strongSelf.presentationData), title: nil, text: i18n("Auth.UnofficialAppCodeTitle", strongSelf.presentationData.strings.baseLanguageCode), actions: [TextAlertAction(type: .defaultAction, title: i18n("Common.OpenTelegram", strongSelf.presentationData.strings.baseLanguageCode), action: {
                             strongSelf.sharedContext.applicationBindings.openUrl("https://t.me/+42777")
                         })]), in: .window(.root))

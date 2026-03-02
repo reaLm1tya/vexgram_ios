@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import CallKit
 import Intents
@@ -145,8 +145,8 @@ class CallKitProviderDelegate: NSObject, CXProviderDelegate {
     }
     
     private static func providerConfiguration() -> CXProviderConfiguration {
-        // MARK: Swiftgram
-        let providerConfiguration = CXProviderConfiguration(localizedName: "Swiftgram")
+        // MARK: VexGram
+        let providerConfiguration = CXProviderConfiguration(localizedName: "VexGram")
         
         providerConfiguration.supportsVideo = true
         providerConfiguration.maximumCallsPerCallGroup = 1

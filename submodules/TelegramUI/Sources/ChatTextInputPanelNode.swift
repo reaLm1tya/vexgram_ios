@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import TelegramUIPreferences
 import SGSimpleSettings
 
@@ -611,7 +611,7 @@ class ChatTextInputPanelNode: ChatInputPanelNode, ASEditableTextNodeDelegate, Ch
     
     private let hapticFeedback = HapticFeedback()
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     private var sendWithReturnKey: Bool
     private var sendWithReturnKeyDisposable: Disposable?
     
@@ -911,7 +911,7 @@ class ChatTextInputPanelNode: ChatInputPanelNode, ASEditableTextNodeDelegate, Ch
         
         self.context = context
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         let sendWithReturnKeySignal = context.account.postbox.preferencesView(keys: [ApplicationSpecificPreferencesKeys.SGUISettings])
         |> map { view -> Bool in
             let settings: SGUISettings = view.values[ApplicationSpecificPreferencesKeys.SGUISettings]?.get(SGUISettings.self) ?? .default
@@ -983,7 +983,7 @@ class ChatTextInputPanelNode: ChatInputPanelNode, ASEditableTextNodeDelegate, Ch
         
         self.attachmentButton.addTarget(self, action: #selector(self.attachmentButtonPressed), forControlEvents: .touchUpInside)
         self.attachmentButtonDisabledNode.addTarget(self, action: #selector(self.attachmentButtonPressed), forControlEvents: .touchUpInside)
-        // MARK: Swiftgram
+        // MARK: VexGram
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.attachmentButtonLongPressed(_:)))
         longPressGesture.minimumPressDuration = 1.0
         self.attachmentButton.view.addGestureRecognizer(longPressGesture)
@@ -4398,7 +4398,7 @@ class ChatTextInputPanelNode: ChatInputPanelNode, ASEditableTextNodeDelegate, Ch
         
         self.updateActivity()
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         if self.sendWithReturnKey && text == "\n" {
             self.sendButtonPressed()
             return false
@@ -4595,7 +4595,7 @@ class ChatTextInputPanelNode: ChatInputPanelNode, ASEditableTextNodeDelegate, Ch
         self.displayAttachmentMenu()
     }
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     @objc func attachmentButtonLongPressed(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
         guard let _ = self.interfaceInteraction?.chatController() as? ChatControllerImpl else {

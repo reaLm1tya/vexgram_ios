@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import AsyncDisplayKit
@@ -481,7 +481,7 @@ public final class ChatListContainerNode: ASDisplayNode, ASGestureRecognizerDele
         
         self.applyItemNodeAsCurrent(id: .all, itemNode: itemNode)
         
-        let panRecognizer = InteractiveTransitionGestureRecognizer(target: self, action: #selector(self.panGesture(_:)), allowedDirections: { [weak self] _ in // MARK: Swiftgram
+        let panRecognizer = InteractiveTransitionGestureRecognizer(target: self, action: #selector(self.panGesture(_:)), allowedDirections: { [weak self] _ in // MARK: VexGram
             guard let self, self.availableFilters.count > 1 || (self.controller?.isStoryPostingAvailable == true && !(self.context.sharedContext.callManager?.hasActiveCall ?? false) && !SGSimpleSettings.shared.disableSwipeToRecordStory) else {
                 return []
             }
@@ -533,7 +533,7 @@ public final class ChatListContainerNode: ASDisplayNode, ASGestureRecognizerDele
     }
     
     @objc private func panGesture(_ recognizer: UIPanGestureRecognizer) {
-        // MARK: Swiftgram
+        // MARK: VexGram
         var _availableFilters = self.availableFilters
         if SGSimpleSettings.shared.allChatsHidden {
             _availableFilters.removeAll { $0 == .all }
@@ -584,7 +584,7 @@ public final class ChatListContainerNode: ASDisplayNode, ASGestureRecognizerDele
                     let coefficient: CGFloat = 0.4
                     return bandingStart + (1.0 - (1.0 / ((bandedOffset * coefficient / range) + 1.0))) * range
                 }
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if case .compact = layout.metrics.widthClass, self.controller?.isStoryPostingAvailable == true && !(self.context.sharedContext.callManager?.hasActiveCall ?? false) && !SGSimpleSettings.shared.disableSwipeToRecordStory {
                     let cameraIsAlreadyOpened = self.controller?.hasStoryCameraTransition ?? false
                     if selectedIndex <= 0 && translation.x > 0.0 {
@@ -1045,7 +1045,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
     private let animationCache: AnimationCache
     private let animationRenderer: MultiAnimationRenderer
     
-    // MARK: Swiftgram
+    // MARK: VexGram
     let inlineTabContainerNode: ChatListFilterTabContainerNode
     let appleStyleTabContainerNode: AppleStyleFoldersNode
     
@@ -1129,7 +1129,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
             openArchiveSettings?()
         })
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.inlineTabContainerNode = ChatListFilterTabContainerNode(inline: true, context: context)
         self.appleStyleTabContainerNode = AppleStyleFoldersNode()
         
@@ -1145,7 +1145,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
         
         self.addSubnode(self.mainContainerNode)
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.addSubnode(self.inlineTabContainerNode)
         self.addSubnode(self.appleStyleTabContainerNode)
         
@@ -1605,7 +1605,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
             cleanMainNavigationBarHeight = visualNavigationHeight
             mainInsets.top = visualNavigationHeight
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         if !self.inlineTabContainerNode.isHidden {
             mainInsets.bottom += 46.0
         } else if !self.appleStyleTabContainerNode.isHidden { mainInsets.bottom += 50.0 }
@@ -1642,7 +1642,7 @@ final class ChatListControllerNode: ASDisplayNode, ASGestureRecognizerDelegate {
             }
         }
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         transition.updateFrame(node: self.inlineTabContainerNode, frame: CGRect(origin: CGPoint(x: 0.0, y: layout.size.height - layout.intrinsicInsets.bottom - 46.0), size: CGSize(width: layout.size.width, height: 46.0)))
         transition.updateFrame(node: self.appleStyleTabContainerNode, frame: CGRect(origin: CGPoint(x: 0.0, y: layout.size.height - layout.intrinsicInsets.bottom - 8.0 - 40.0), size: CGSize(width: layout.size.width, height: 40.0)))
         self.tapRecognizer?.isEnabled = self.isReorderingFilters

@@ -1,10 +1,10 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+﻿load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 sgdeps = [
-    "//Swiftgram/SwiftSoup:SwiftSoup",
-    "//Swiftgram/SGSimpleSettings:SGSimpleSettings",
-    "//Swiftgram/SGTranslationLangFix:SGTranslationLangFix",
-    "//Swiftgram/SGWebSettingsScheme:SGWebSettingsScheme"
+    "//VexGram/SwiftSoup:SwiftSoup",
+    "//VexGram/SGSimpleSettings:SGSimpleSettings",
+    "//VexGram/SGTranslationLangFix:SGTranslationLangFix",
+    "//VexGram/SGWebSettingsScheme:SGWebSettingsScheme"
 ]
 
 swift_library(

@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import Display
@@ -568,7 +568,7 @@ public final class EntityKeyboardComponent: Component {
             
             let emojiContentItemIdUpdated = ActionSlot<(AnyHashable, AnyHashable?, ComponentTransition)>()
             if let emojiContent = component.emojiContent {
-                // MARK: Swiftgram
+                // MARK: VexGram
                 if SGSimpleSettings.shared.defaultEmojisFirst {
                     emojiContent.panelItemGroups = sgPatchEmojiKeyboardItems(emojiContent.panelItemGroups)
                     emojiContent.contentItemGroups = sgPatchEmojiKeyboardItems(emojiContent.contentItemGroups)

@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import TelegramUIPreferences
 import SGSimpleSettings
 
@@ -1310,7 +1310,7 @@ private final class StoryContainerScreenComponent: Component {
                     }
                 })
                 
-                // MARK: Swiftgram
+                // MARK: VexGram
                 let warnOnStoriesOpenSignal = component.context.account.postbox.preferencesView(keys: [ApplicationSpecificPreferencesKeys.SGUISettings])
                 |> map { view -> Bool in
                     let settings: SGUISettings = view.values[ApplicationSpecificPreferencesKeys.SGUISettings]?.get(SGUISettings.self) ?? .default
@@ -1389,7 +1389,7 @@ private final class StoryContainerScreenComponent: Component {
                         if case .file = slice.item.storyItem.media {
                             isVideo = true
                         }
-                        // TODO(swiftgram): Show warning on each new peerId story
+                        // TODO(VexGram): Show warning on each new peerId story
                         /* if self.requestedDisplayStoriesWarning, let previousSlice = stateValue?.previousSlice, previousSlice.peer.id != slice.peer.id {
                             self.isDisplayingStoriesWarning = self.requestedDisplayStoriesWarning
                             update = false
@@ -1943,7 +1943,7 @@ private final class StoryContainerScreenComponent: Component {
                 controller.presentationContext.containerLayoutUpdated(subLayout, transition: transition.containedViewLayoutTransition)
             }
             
-            // MARK: Swiftgram
+            // MARK: VexGram
             if self.isDisplayingStoriesWarning {
                 let _ = self.storiesWarning.update(
                     transition: .immediate,

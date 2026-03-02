@@ -1,4 +1,4 @@
-load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+﻿load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 load(
     "@build_bazel_rules_apple//apple:resources.bzl",
     "apple_resource_bundle",
@@ -9,7 +9,7 @@ load("//build-system/bazel-utils:plist_fragment.bzl",
 )
 
 sgDeps = [
-    "//Swiftgram/SGSimpleSettings:SGSimpleSettings"
+    "//VexGram/SGSimpleSettings:SGSimpleSettings"
 ]
 
 filegroup(

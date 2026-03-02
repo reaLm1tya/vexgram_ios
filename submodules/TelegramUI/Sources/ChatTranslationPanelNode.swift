@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 import Display
 import AsyncDisplayKit
@@ -154,7 +154,7 @@ final class ChatTranslationPanelNode: ASDisplayNode {
         let closeButtonSize = self.closeButton.measure(CGSize(width: 100.0, height: 100.0))
         self.closeButton.frame = CGRect(origin: CGPoint(x: width - contentRightInset - closeButtonSize.width, y: floorToScreenPixels((panelHeight - closeButtonSize.height) / 2.0)), size: closeButtonSize)
         
-        // MARK: Swiftgram
+        // MARK: VexGram
         // if interfaceState.isPremium {
             self.moreButton.isHidden = false
             self.closeButton.isHidden = true
@@ -186,7 +186,7 @@ final class ChatTranslationPanelNode: ASDisplayNode {
         guard let translationState = self.chatInterfaceState?.translationState else {
             return
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         let isPremium = self.chatInterfaceState?.isPremium ?? false
         if isPremium || true {
             self.interfaceInteraction?.toggleTranslation(translationState.isEnabled ? .original : .translated)

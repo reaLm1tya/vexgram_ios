@@ -1,4 +1,4 @@
-// MARK: Swiftgram
+﻿// MARK: VexGram
 import SGStrings
 
 import Foundation
@@ -166,7 +166,7 @@ private struct PasscodeOptionsData: Equatable {
 
 private func autolockStringForTimeout(strings: PresentationStrings, timeout: Int32?) -> String {
     if let timeout = timeout {
-        // MARK: Swiftgram
+        // MARK: VexGram
         if timeout == 5 {
             return i18n("PasscodeSettings.AutoLock.InFiveSeconds", strings.baseLanguageCode)
         } else if timeout == 10 {

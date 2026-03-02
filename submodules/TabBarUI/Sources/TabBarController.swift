@@ -1,4 +1,4 @@
-import SGSimpleSettings
+﻿import SGSimpleSettings
 import Foundation
 import UIKit
 import AsyncDisplayKit
@@ -222,7 +222,7 @@ open class TabBarControllerImpl: ViewController, TabBarController {
     }
     
     override open func loadDisplayNode() {
-        // MARK: Swiftgram
+        // MARK: VexGram
         self.displayNode = TabBarControllerNode(showTabNames: self.showTabNames, theme: self.theme, navigationBarPresentationData: self.navigationBarPresentationData, itemSelected: { [weak self] index, longTap, itemNodes in
             if let strongSelf = self {
                 var index = index

@@ -1,4 +1,4 @@
-import UIKit
+﻿import UIKit
 
 public enum DeviceType {
     case phone
@@ -369,7 +369,7 @@ public enum DeviceMetrics: CaseIterable, Equatable {
         if case .iPhoneX = self {
             return false
         }
-        // MARK: Swiftgram
+        // MARK: VexGram
         return self.hasTopNotch || self.hasDynamicIsland
     }
 }

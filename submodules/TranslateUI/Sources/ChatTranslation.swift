@@ -1,4 +1,4 @@
-import TextFormat
+﻿import TextFormat
 import Foundation
 import NaturalLanguage
 import SwiftSignalKit
@@ -137,7 +137,7 @@ public func translateMessageIds(context: AccountContext, messageIds: [EngineMess
                         }
                     }
                 }
-                // MARK: Swiftgram
+                // MARK: VexGram
                 guard forQuickTranslate || message.author?.id != context.account.peerId else {
                     continue
                 }
@@ -151,7 +151,7 @@ public func translateMessageIds(context: AccountContext, messageIds: [EngineMess
                         messageIdsSet.insert(messageId)
                         messageDictToTranslate[messageId] = message.text
                     }
-                // TODO(swiftgram): Translate polls
+                // TODO(VexGram): Translate polls
                 } else if let _ = message.media.first(where: { $0 is TelegramMediaPoll }), !viaText {
                     if !messageIdsSet.contains(messageId) {
                         messageIdsToTranslate.append(messageId)

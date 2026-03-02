@@ -596,6 +596,7 @@ def build(bazel, arguments):
 
     if arguments.xcodeManagedCodesigning is not None and arguments.xcodeManagedCodesigning:
         bazel_command_line.set_disable_extensions()
+        bazel_command_line.set_disable_provisioning_profiles()
 
     bazel_command_line.set_split_swiftmodules(arguments.enableParallelSwiftmoduleGeneration)
 

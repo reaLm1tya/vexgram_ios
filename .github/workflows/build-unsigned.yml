@@ -35,6 +35,7 @@ jobs:
 
       - name: Build the App
         run: |
+          set -e
           set -x
           SOURCE_DIR=/Users/Shared/telegram-ios
           BAZEL_USER_ROOT="/private/var/tmp/_bazel_containerhost"
@@ -57,12 +58,24 @@ jobs:
             --configuration=release_arm64 \
             --buildNumber="$BUILD_NUMBER"
 
+      - name: Collect IPA
+        run: |
+          set -e
+          SOURCE_DIR=/Users/Shared/telegram-ios
+          cd $SOURCE_DIR
           OUTPUT_PATH="build/artifacts"
           rm -rf "$OUTPUT_PATH"
           mkdir -p "$OUTPUT_PATH"
-          for f in bazel-out/ios_arm64-opt-ios-arm64-min*/bin/Telegram/VexGram.ipa bazel-out/applebin_ios-ios_arm*-opt-ST-*/bin/Telegram/VexGram.ipa; do
-            [ -f "$f" ] && cp "$f" $OUTPUT_PATH/ && break
-          done
+          IPA=$(find bazel-out -name "VexGram.ipa" -type f 2>/dev/null | head -1)
+          if [ -n "$IPA" ]; then
+            cp "$IPA" "$OUTPUT_PATH/VexGram.ipa"
+            echo "Copied IPA from: $IPA"
+          else
+            echo "VexGram.ipa not found. Listing bazel-out:"
+            ls -la bazel-out/ 2>/dev/null || true
+            find bazel-out -name "*.ipa" 2>/dev/null || true
+            exit 1
+          fi
 
       - name: Upload VexGram.ipa
         uses: actions/upload-artifact@v4

@@ -160,7 +160,7 @@ extension _AdaptedPostboxEncoder.UnkeyedContainer: UnkeyedEncodingContainer {
         self.items.append(.string(value))
     }
 
-    func encode(_ value: Data) throws {
+    private func encode(_ value: Data) throws {
         self.items.append(.data(value))
     }
     

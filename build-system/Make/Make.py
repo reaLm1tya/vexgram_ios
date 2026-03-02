@@ -45,6 +45,7 @@ class BazelCommandLine:
         self.show_actions = False
         self.enable_sandbox = False
         self.disable_provisioning_profiles = False
+        self.disable_extensions = False
 
         self.common_args = [
             # https://docs.bazel.build/versions/master/command-line-reference.html
@@ -145,6 +146,9 @@ class BazelCommandLine:
 
     def set_disable_provisioning_profiles(self):
         self.disable_provisioning_profiles = True
+
+    def set_disable_extensions(self):
+        self.disable_extensions = True
 
     def set_configuration(self, configuration):
         if configuration == 'debug_universal':
@@ -338,6 +342,8 @@ class BazelCommandLine:
 
         if self.disable_provisioning_profiles:
             combined_arguments += ['--//Telegram:disableProvisioningProfiles']
+        if self.disable_extensions:
+            combined_arguments += ['--//Telegram:disableExtensions']
 
         if self.configuration_path is None:
             raise Exception('configuration_path is not defined')
@@ -600,6 +606,9 @@ def build(bazel, arguments):
     bazel_command_line.set_continue_on_error(arguments.continueOnError)
     bazel_command_line.set_show_actions(arguments.showActions)
     bazel_command_line.set_enable_sandbox(arguments.sandbox)
+
+    if arguments.xcodeManagedCodesigning is not None and arguments.xcodeManagedCodesigning:
+        bazel_command_line.set_disable_extensions()
 
     bazel_command_line.set_split_swiftmodules(arguments.enableParallelSwiftmoduleGeneration)
 

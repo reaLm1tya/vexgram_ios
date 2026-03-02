@@ -1100,32 +1100,9 @@ genrule(
     ]
 )
 
-genrule(
-    name = "GenerateAddAlternateIcons",
-    srcs = [
-        "Telegram-iOS/AddAlternateIcons.sh",
-    ],
-    cmd_bash =
-"""
-    cat $(location Telegram-iOS/AddAlternateIcons.sh) >> $(location AddAlternateIcons.sh)
-""",
-    outs = [
-        "AddAlternateIcons.sh",
-    ],
-    executable = True,
-    visibility = [
-        "//visibility:public",
-    ]
-)
-
-sh_binary(
-    name = "AddAlternateIcons",
-    data = [
-        "Telegram-iOS/AlternateIcons.plist",
-        "Telegram-iOS/AlternateIcons-iPad.plist",
-    ],
-    srcs = [":GenerateAddAlternateIcons"],
-)
+# AddAlternateIcons disabled for Bazel 9 (sh_binary not in native; ipa_post_processor unused)
+# genrule(name = "GenerateAddAlternateIcons", ...)
+# sh_binary(name = "AddAlternateIcons", ...)
 
 plist_fragment(
     name = "TelegramUIInfoPlist",

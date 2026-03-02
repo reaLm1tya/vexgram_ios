@@ -18,26 +18,51 @@ jobs:
 
       - name: Patch rules_apple to allow build without provisioning profile (CI)
         run: |
-          P="build-system/bazel-rules/rules_apple/apple/internal/partials/provisioning_profile.bzl"
+          # 1) provisioning_profile.bzl: allow no profile (return empty struct)
+          P1="build-system/bazel-rules/rules_apple/apple/internal/partials/provisioning_profile.bzl"
           python3 << PYEOF
-          path = "$P"
+          path = "$P1"
           with open(path) as f:
             s = f.read()
           if "return struct(bundle_files = [])" in s:
-            print("Already patched")
-            exit(0)
-          beg = s.find("if not profile_artifact:")
-          if beg == -1:
-            raise SystemExit("Pattern 'if not profile_artifact:' not found")
-          line_start = s.rfind("\n", 0, beg) + 1
-          indent = s[line_start:beg]
-          end = s.find("# Create intermediate", beg)
-          if end == -1:
-            raise SystemExit("Pattern '# Create intermediate' not found")
-          s2 = s[:line_start] + indent + "if not profile_artifact:\n" + indent + "    return struct(bundle_files = [])\n\n    " + s[end:]
-          with open(path, "w") as f:
-            f.write(s2)
-          print("Patched")
+            print("provisioning_profile.bzl: already patched")
+          else:
+            beg = s.find("if not profile_artifact:")
+            if beg == -1:
+              raise SystemExit("Pattern 'if not profile_artifact:' not found in " + path)
+            line_start = s.rfind("\n", 0, beg) + 1
+            indent = s[line_start:beg]
+            end = s.find("# Create intermediate", beg)
+            if end == -1:
+              raise SystemExit("Pattern '# Create intermediate' not found")
+            s2 = s[:line_start] + indent + "if not profile_artifact:\n" + indent + "    return struct(bundle_files = [])\n\n    " + s[end:]
+            with open(path, "w") as f:
+              f.write(s2)
+            print("Patched " + path)
+          PYEOF
+          # 2) codesigning_support.bzl: skip validation when no profile (device build without profile)
+          P2="build-system/bazel-rules/rules_apple/apple/internal/codesigning_support.bzl"
+          python3 << PYEOF
+          path = "$P2"
+          with open(path) as f:
+            s = f.read()
+          if "CI: allow device build without profile" in s:
+            print("codesigning_support.bzl: already patched")
+          else:
+            beg = s.find("The provisioning_profile attribute must be set for device")
+            if beg == -1:
+              raise SystemExit("Pattern not found in " + path)
+            fail_start = s.rfind("fail(", 0, beg)
+            if fail_start == -1:
+              raise SystemExit("fail( not found before marker")
+            line_start = s.rfind("\n", 0, fail_start) + 1
+            indent = s[line_start:fail_start]
+            end = s.find("platform_prerequisites.platform_type)", beg) + len("platform_prerequisites.platform_type)")
+            repl = indent + "pass  # CI: allow device build without profile\n"
+            s2 = s[:line_start] + repl + s[end:]
+            with open(path, "w") as f:
+              f.write(s2)
+            print("Patched " + path)
           PYEOF
 
       - name: Set active Xcode path

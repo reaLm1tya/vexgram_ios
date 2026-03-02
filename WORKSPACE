@@ -28,12 +28,6 @@ local_repository(
     path = "build-system/bazel-rules/apple_support",
 )
 
-# Created by Make.py resolve_configuration() before build; required for Bazel 9 repo visibility
-local_repository(
-    name = "build_configuration",
-    path = "build-input/configuration-repository",
-)
-
 http_file(
     name = "cmake_tar_gz",
     urls = ["https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1-macos-universal.tar.gz"],
@@ -101,4 +95,10 @@ new_git_repository(
     remote = "https://github.com/FLEXTool/FLEX.git",
     commit = "1b983160cc188aff18284c1d990121cdb1e42e9c",
     build_file = "@//VexGram/FLEX:FLEX.BUILD"
+)
+
+# Must be last: created by Make.py resolve_configuration() before build; required for Bazel 9 repo visibility
+local_repository(
+    name = "build_configuration",
+    path = "build-input/configuration-repository",
 )

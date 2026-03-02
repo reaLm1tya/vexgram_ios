@@ -16,6 +16,30 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Patch rules_apple to allow build without provisioning profile (CI)
+        run: |
+          P="build-system/bazel-rules/rules_apple/apple/internal/partials/provisioning_profile.bzl"
+          python3 << PYEOF
+          path = "$P"
+          with open(path) as f:
+            s = f.read()
+          if "return struct(bundle_files = [])" in s:
+            print("Already patched")
+            exit(0)
+          beg = s.find("if not profile_artifact:")
+          if beg == -1:
+            raise SystemExit("Pattern 'if not profile_artifact:' not found")
+          line_start = s.rfind("\n", 0, beg) + 1
+          indent = s[line_start:beg]
+          end = s.find("# Create intermediate", beg)
+          if end == -1:
+            raise SystemExit("Pattern '# Create intermediate' not found")
+          s2 = s[:line_start] + indent + "if not profile_artifact:\n" + indent + "    return struct(bundle_files = [])\n\n    " + s[end:]
+          with open(path, "w") as f:
+            f.write(s2)
+          print("Patched")
+          PYEOF
+
       - name: Set active Xcode path
         run: |
           if [ -d /Applications/Xcode_15.2.app ]; then

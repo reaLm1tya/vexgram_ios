@@ -1,0 +1,15 @@
+--- a/apple/internal/partials/provisioning_profile.bzl
++++ b/apple/internal/partials/provisioning_profile.bzl
+@@ -39,11 +39,7 @@ def _provisioning_profile_partial_impl(
+     """Implementation for the provisioning profile partial."""
+
+     if not profile_artifact:
+-        fail(
+-            "\n".join([
+-                "ERROR: In {}:".format(str(rule_label)),
+-                "Building for device, but no provisioning_profile attribute was set.",
+-            ]),
+-        )
++        return struct(bundle_files = [])
+
+     # Create intermediate file with proper name for the binary.

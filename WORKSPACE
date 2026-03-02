@@ -28,6 +28,12 @@ local_repository(
     path = "build-system/bazel-rules/apple_support",
 )
 
+# Created by Make.py resolve_configuration() before build; required for Bazel 9 repo visibility
+local_repository(
+    name = "build_configuration",
+    path = "build-input/configuration-repository",
+)
+
 http_file(
     name = "cmake_tar_gz",
     urls = ["https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1-macos-universal.tar.gz"],

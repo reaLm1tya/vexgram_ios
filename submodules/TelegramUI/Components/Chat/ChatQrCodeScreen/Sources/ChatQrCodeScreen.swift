@@ -2489,8 +2489,9 @@ private func renderVideo(context: AccountContext, backgroundImage: UIImage, user
         export.outputURL = exportURL
         
         export.exportAsynchronously {
+            let status = export.status
             Queue.mainQueue().async {
-                switch export.status {
+                switch status {
                 case .completed:
                     completion(exportURL)
                 default:

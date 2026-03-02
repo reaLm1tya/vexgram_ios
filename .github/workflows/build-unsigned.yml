@@ -33,9 +33,11 @@ jobs:
           cp -R $GITHUB_WORKSPACE /Users/Shared/
           mv /Users/Shared/$(basename $GITHUB_WORKSPACE) /Users/Shared/telegram-ios
 
-      - name: Use system Bazel (Bazelisk)
+      - name: Use Bazel 7.1.1 via Bazelisk (project requires Bazel 7, not 9)
         run: |
-          which bazel || true
+          export USE_BAZEL_VERSION=7.1.1
+          echo "USE_BAZEL_VERSION=7.1.1" >> $GITHUB_ENV
+          which bazel
           bazel --version
 
       - name: Build the App
@@ -56,7 +58,6 @@ jobs:
 
           python3 -u build-system/Make/Make.py \
             --bazel="$(which bazel)" \
-            --overrideBazelVersion \
             --bazelUserRoot="$BAZEL_USER_ROOT" \
             --overrideXcodeVersion \
             build \

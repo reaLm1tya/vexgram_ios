@@ -250,8 +250,6 @@ class BazelCommandLine:
         combined_arguments = []
         if self.bazel_user_root is not None:
             combined_arguments += ['--output_user_root={}'.format(self.bazel_user_root)]
-        if self.configuration_path is not None:
-            combined_arguments += ['--override_repository=build_configuration={}'.format(self.configuration_path)]
         return combined_arguments
 
     def invoke_clean(self):

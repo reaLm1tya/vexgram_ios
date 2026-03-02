@@ -1,3 +1,8 @@
+# Bazel: avoid BOM and use LF so Bazel parses WORKSPACE/BUILD correctly
+WORKSPACE text eol=lf
+BUILD text eol=lf
+*.bzl text eol=lf
+
 # Linguist overrides for vendored code
 submodules/AsyncDisplayKit/* linguist-vendored
 submodules/ffmpeg/* linguist-vendored

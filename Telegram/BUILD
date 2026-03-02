@@ -1,4 +1,4 @@
-﻿load("@bazel_skylib//rules:common_settings.bzl",
+load("@bazel_skylib//rules:common_settings.bzl",
     "bool_flag",
 )
 

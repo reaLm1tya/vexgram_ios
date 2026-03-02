@@ -16,6 +16,7 @@ objc_library(
     ]) + private_headers,
     copts = [
         "-Werror",
+        "-Wno-vla-cxx-extension",
     ],
     hdrs = public_headers,
     defines = [

@@ -52,6 +52,7 @@ swift_library(
     ]),
     copts = [
         "-warnings-as-errors",
+        "-Xfrontend", "-strict-concurrency=minimal",  # CMSampleBuffer in queue.async; Swift 6 Sendable
     ],
     data = [
         ":CameraBundle",

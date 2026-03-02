@@ -161,7 +161,7 @@ private final class VideoRecorderImpl {
             }
             
             if self.assetWriter.status == .unknown {
-                if sampleBuffer.presentationTimestamp < self.recordingStartSampleTime {
+                if presentationTime < self.recordingStartSampleTime {
                     return
                 }
                 if self.videoInput != nil && (self.audioInput != nil || !self.configuration.hasAudio) {
@@ -183,12 +183,12 @@ private final class VideoRecorderImpl {
                 self.startedSession = true
             }
             
-            if self.recordingStartSampleTime == .invalid || sampleBuffer.presentationTimestamp < self.recordingStartSampleTime {
+            if self.recordingStartSampleTime == .invalid || presentationTime < self.recordingStartSampleTime {
                 return
             }
            
             if self.assetWriter.status == .writing && self.startedSession {
-                if self.recordingStopSampleTime != .invalid && sampleBuffer.presentationTimestamp > self.recordingStopSampleTime {
+                if self.recordingStopSampleTime != .invalid && presentationTime > self.recordingStopSampleTime {
                     self.hasAllVideoBuffers = true
                     self.maybeFinish()
                     return
@@ -254,7 +254,8 @@ private final class VideoRecorderImpl {
             guard let formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer), CMFormatDescriptionGetMediaType(formatDescription) == kCMMediaType_Audio else {
                 return
             }
-            
+            let presentationTimestamp = sampleBuffer.presentationTimestamp
+
             var failed = false
             if self.audioInput == nil {
                 Logger.shared.log("VideoRecorder", "Try adding audio input")
@@ -297,10 +298,10 @@ private final class VideoRecorderImpl {
             }
                                     
             if self.recordingStartSampleTime != .invalid {
-                if sampleBuffer.presentationTimestamp < self.recordingStartSampleTime {
+                if presentationTimestamp < self.recordingStartSampleTime {
                     return
                 }
-                if self.recordingStopSampleTime != .invalid && sampleBuffer.presentationTimestamp > self.recordingStopSampleTime {
+                if self.recordingStopSampleTime != .invalid && presentationTimestamp > self.recordingStopSampleTime {
                     self.hasAllAudioBuffers = true
                     self.maybeFinish()
                     return

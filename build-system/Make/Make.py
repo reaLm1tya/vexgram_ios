@@ -95,20 +95,7 @@ class BazelCommandLine:
         ]
 
         self.common_release_args = [
-            # https://github.com/bazelbuild/rules_swift
-            # Enable whole module optimization.
-            '--features=swift.opt_uses_wmo',
-
-            # https://github.com/bazelbuild/rules_swift
-            # Use -Osize instead of -O when building swift modules.
-            #'--features=swift.opt_uses_osize',
-
-            # --num-threads 0 forces swiftc to generate one object file per module; it:
-            # 1. resolves issues with the linker caused by the swift-objc mixing.
-            # 2. makes the resulting binaries significantly smaller (up to 9% for this project).
-            '--swiftcopt=-num-threads', '--swiftcopt=1',
-            '--swiftcopt=-j1',
-
+            # swift.opt_uses_wmo and -num-threads/-j1 removed for Bazel 9 / rules_swift compatibility
             # Strip unsused code.
             '--features=dead_strip',
             '--objc_enable_binary_stripping',

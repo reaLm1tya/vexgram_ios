@@ -33,9 +33,9 @@ jobs:
           cp -R $GITHUB_WORKSPACE /Users/Shared/
           mv /Users/Shared/$(basename $GITHUB_WORKSPACE) /Users/Shared/telegram-ios
 
-      - name: Install Bazel
+      - name: Use system Bazel (Bazelisk)
         run: |
-          brew install bazel
+          which bazel || true
           bazel --version
 
       - name: Build the App

@@ -89,6 +89,15 @@ jobs:
           which bazel
           bazel --version
 
+      - name: Restore Bazel cache
+        uses: actions/cache/restore@v4
+        id: bazel-cache-restore
+        with:
+          path: /private/var/tmp/_bazel_containerhost
+          key: macos-bazel-7.1.1-${{ hashFiles('MODULE.bazel.lock', 'WORKSPACE', 'versions.json', 'Telegram/BUILD') }}
+          restore-keys: |
+            macos-bazel-7.1.1-
+
       - name: Build the App
         run: |
           set -e
@@ -133,6 +142,13 @@ jobs:
             find bazel-out -name "*.ipa" 2>/dev/null || true
             exit 1
           fi
+
+      - name: Save Bazel cache
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: /private/var/tmp/_bazel_containerhost
+          key: macos-bazel-7.1.1-${{ hashFiles('MODULE.bazel.lock', 'WORKSPACE', 'versions.json', 'Telegram/BUILD') }}
 
       - name: Upload VexGram.ipa
         uses: actions/upload-artifact@v4

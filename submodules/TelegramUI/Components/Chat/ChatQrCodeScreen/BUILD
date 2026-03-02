@@ -8,6 +8,7 @@ swift_library(
     ]),
     copts = [
         "-warnings-as-errors",
+        "-Xfrontend", "-strict-concurrency=minimal",  # AVAssetExportSession in exportAsynchronously completion
     ],
     deps = [
         "//submodules/Display",

@@ -1,4 +1,4 @@
-﻿// MARK: VexGram
+// MARK: VexGram
 import SGActionRequestHandlerSanitizer
 import SGAPIWebSettings
 import SGLogging
@@ -1842,15 +1842,16 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         self.isActiveValue = false
         self.isActivePromise.set(false)
         
-        var taskId: UIBackgroundTaskIdentifier?
-        taskId = application.beginBackgroundTask(withName: "lock", expirationHandler: {
-            if let taskId = taskId {
-                UIApplication.shared.endBackgroundTask(taskId)
+        final class TaskIdBox { var value: UIBackgroundTaskIdentifier? }
+        let taskIdBox = TaskIdBox()
+        taskIdBox.value = application.beginBackgroundTask(withName: "lock", expirationHandler: {
+            if let id = taskIdBox.value {
+                UIApplication.shared.endBackgroundTask(id)
             }
         })
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.0, execute: {
-            if let taskId = taskId {
-                UIApplication.shared.endBackgroundTask(taskId)
+            if let id = taskIdBox.value {
+                UIApplication.shared.endBackgroundTask(id)
             }
         })
     }

@@ -99,6 +99,8 @@ jobs:
             macos-bazel-7.1.1-
 
       - name: Build the App
+        env:
+          BAZEL_JOBS: "6"
         run: |
           set -e
           set -x

@@ -70,14 +70,15 @@ class BazelCommandLine:
             '--experimental_remote_cache_async',
         ]
 
+        jobs = int(os.environ.get('BAZEL_JOBS', 0)) or os.cpu_count()
         self.common_build_args = [
             # https://github.com/bazelbuild/rules_swift
             # If enabled the skip function bodies frontend flag is passed when using derived
             # files generation.
             '--features=swift.skip_function_bodies_for_derived_files',
             
-            # Set the number of parallel processes to match the available CPU core count.
-            '--jobs={}'.format(os.cpu_count()),
+            # Set the number of parallel processes (BAZEL_JOBS env or CPU count).
+            '--jobs={}'.format(jobs),
         ]
 
         self.common_debug_args = [
@@ -90,8 +91,8 @@ class BazelCommandLine:
             '--features=swift.enable_batch_mode',
 
             # https://docs.bazel.build/versions/master/command-line-reference.html
-            # Set the number of parallel jobs per module to saturate the available CPU resources.
-            '--swiftcopt=-j{}'.format(os.cpu_count() - 1),
+            # Set the number of parallel jobs per module (BAZEL_JOBS env or CPU count - 1).
+            '--swiftcopt=-j{}'.format(max(1, jobs - 1)),
         ]
 
         self.common_release_args = [

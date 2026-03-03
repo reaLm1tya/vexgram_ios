@@ -333,7 +333,11 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         precondition(!testIsLaunched)
         testIsLaunched = true
         
-        // VexGram: do NOT touch CloudKit at launch — CKContainer.default() triggers EXC_BREAKPOINT in CloudKit's dispatch_once when sideloaded.
+        // VexGram: disable CloudKit immediately when sideloaded (no App Group) so no code path touches CloudKit and hits EXC_BREAKPOINT.
+        if let bid = Bundle.main.bundleIdentifier, !bid.isEmpty,
+           FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.\(bid)") == nil {
+            setCloudKitDisabledForSideload(true)
+        }
         
         let _ = voipTokenPromise.get().start(next: { token in
             self.voipDeviceToken.set(.single(token))
@@ -1353,7 +1357,13 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
                 |> take(1)
                 |> deliverOnMainQueue).start(next: { _ in
                     progressDisposable.dispose()
-                    self.mainWindow.present(context.rootController, on: .root)
+                    // VexGram: when sideloaded, delay presenting auth UI so window/layout is ready and UINavigationBar init doesn't Data Abort.
+                    let presentAuth = { self.mainWindow.present(context.rootController, on: .root) }
+                    if cloudKitDisabledForSideload {
+                        Queue.mainQueue().after(0.6, presentAuth)
+                    } else {
+                        presentAuth()
+                    }
                 }))
             } else {
                 authContextReadyDisposable.set(nil)

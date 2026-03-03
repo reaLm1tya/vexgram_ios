@@ -47,6 +47,8 @@ import MediaEditor
 import TelegramUIDeclareEncodables
 import ContextMenuScreen
 import MetalEngine
+import CloudKit
+import OpenGLES
 
 #if canImport(AppCenter)
 import AppCenter
@@ -331,6 +333,11 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         precondition(!testIsLaunched)
         testIsLaunched = true
+        
+        // VexGram: force CloudKit and OpenGL one-time inits on main thread at launch to avoid
+        // EXC_BREAKPOINT (CloudKit dispatch_once) and Data Abort (gfxInitializeLibrary) when sideloaded.
+        if #available(iOS 10.0, *) { _ = CKContainer.default() }
+        _ = EAGLContext(api: .openGLES2)
         
         let _ = voipTokenPromise.get().start(next: { token in
             self.voipDeviceToken.set(.single(token))

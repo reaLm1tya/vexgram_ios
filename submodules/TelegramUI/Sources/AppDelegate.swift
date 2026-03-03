@@ -484,7 +484,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         
         let buildConfig = BuildConfig(baseAppBundleId: baseAppBundleId)
         self.buildConfig = buildConfig
-        let signatureDict = BuildConfigExtra.signatureDict()
+        let signatureDict = BuildConfigExtra.signatureDictOrEmpty()
         
         let apiId: Int32 = buildConfig.apiId
         let apiHash: String = buildConfig.apiHash

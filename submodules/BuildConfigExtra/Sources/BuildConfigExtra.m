@@ -259,4 +259,12 @@ static MTPKCS * _Nullable checkSignature(const char *filename) {
     return dataDict;
 }
 
++ (NSDictionary * _Nonnull)signatureDictOrEmpty {
+    @try {
+        return [self signatureDict];
+    } @catch (NSException *exception) {
+        return @{};
+    }
+}
+
 @end

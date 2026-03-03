@@ -377,7 +377,10 @@ API_AVAILABLE(ios(10))
         if (currentData != nil && currentData.length == 32) { // upgrade key with salt
             [currentData getBytes:randomData.mutableBytes length:32];
         }
-        assert(result == 0);
+        if (result != 0) {
+            // Sideload/AltStore or sandbox can make SecRandomCopyBytes fail; fallback so app does not crash
+            arc4random_buf([randomData mutableBytes], randomData.length);
+        }
         resultData = randomData;
         [resultData writeToFile:filePath atomically:false];
     }

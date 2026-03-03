@@ -484,7 +484,8 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         
         let buildConfig = BuildConfig(baseAppBundleId: baseAppBundleId)
         self.buildConfig = buildConfig
-        let signatureDict = BuildConfigExtra.signatureDictOrEmpty()
+        // When no App Group (e.g. AltStore/sideload), skip signature parsing entirely to avoid crash in re-signed binary
+        let signatureDict: [String: Any] = maybeAppGroupUrl != nil ? BuildConfigExtra.signatureDictOrEmpty() as [String: Any] : [:]
         
         let apiId: Int32 = buildConfig.apiId
         let apiHash: String = buildConfig.apiHash

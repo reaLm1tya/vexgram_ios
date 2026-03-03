@@ -4,6 +4,10 @@ import MtProtoKit
 import SwiftSignalKit
 import EncryptionProvider
 
+/// When true, CloudKit is not used (avoids EXC_BREAKPOINT in CloudKit dispatch_once when sideloaded).
+public var cloudKitDisabledForSideload = false
+public func setCloudKitDisabledForSideload(_ value: Bool) { cloudKitDisabledForSideload = value }
+
 private enum FetchError {
     case generic
     case networkUnavailable
@@ -15,6 +19,10 @@ private func fetchRawData(prefix: String) -> Signal<Data, FetchError> {
         #if targetEnvironment(simulator)
         return EmptyDisposable
         #else
+        if cloudKitDisabledForSideload {
+            subscriber.putCompletion()
+            return EmptyDisposable
+        }
         let container = CKContainer.default()
         let publicDatabase = container.database(with: .public)
         let recordId = CKRecord.ID(recordName: "emergency-datacenter-\(prefix)")

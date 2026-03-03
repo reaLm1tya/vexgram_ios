@@ -47,7 +47,7 @@ import MediaEditor
 import TelegramUIDeclareEncodables
 import ContextMenuScreen
 import MetalEngine
-import CloudKit
+import CloudData
 
 #if canImport(AppCenter)
 import AppCenter
@@ -333,9 +333,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         precondition(!testIsLaunched)
         testIsLaunched = true
         
-        // VexGram: force CloudKit one-time init on main thread at launch to avoid
-        // EXC_BREAKPOINT in CloudKit dispatch_once when sideloaded. (EAGLContext omitted: deprecated, breaks build.)
-        if #available(iOS 10.0, *) { _ = CKContainer.default() }
+        // VexGram: do NOT touch CloudKit at launch — CKContainer.default() triggers EXC_BREAKPOINT in CloudKit's dispatch_once when sideloaded.
         
         let _ = voipTokenPromise.get().start(next: { token in
             self.voipDeviceToken.set(.single(token))
@@ -533,6 +531,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
             containerPath = appGroupUrl.path
         } else {
             // AltStore / sideload: App Group not in profile — use app container so app can start
+            setCloudKitDisabledForSideload(true) // avoid EXC_BREAKPOINT in CloudKit dispatch_once
             guard let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
                 self.mainWindow?.presentNative(UIAlertController(title: nil, message: "Error 2", preferredStyle: .alert))
                 return true

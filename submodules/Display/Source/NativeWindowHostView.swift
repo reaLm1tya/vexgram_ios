@@ -399,11 +399,12 @@ public func nativeWindowHostView() -> (UIWindow & WindowHost, WindowHostView) {
     }()
     let _ = { () -> UINavigationController in
         let nav = UINavigationController(rootViewController: UIViewController())
-        let navView = nav.view
-        navView.frame = rootViewController.view.bounds
-        rootViewController.view.addSubview(navView)
-        navView.layoutIfNeeded()
-        navView.removeFromSuperview()
+        if let navView = nav.view {
+            navView.frame = rootViewController.view.bounds
+            rootViewController.view.addSubview(navView)
+            navView.layoutIfNeeded()
+            navView.removeFromSuperview()
+        }
         return nav
     }()
     

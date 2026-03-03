@@ -124,7 +124,8 @@ jobs:
             --configurationPath="build-system/appstore-configuration.json" \
             --xcodeManagedCodesigning \
             --configuration=release_arm64 \
-            --buildNumber="$BUILD_NUMBER"
+            --buildNumber="$BUILD_NUMBER" \
+            --outputBuildArtifactsPath="build/artifacts"
 
       - name: Collect IPA
         run: |
@@ -132,17 +133,26 @@ jobs:
           SOURCE_DIR=/Users/Shared/telegram-ios
           cd $SOURCE_DIR
           OUTPUT_PATH="build/artifacts"
-          rm -rf "$OUTPUT_PATH"
           mkdir -p "$OUTPUT_PATH"
-          IPA=$(find bazel-out -name "VexGram.ipa" -type f 2>/dev/null | head -1)
-          if [ -n "$IPA" ]; then
-            cp "$IPA" "$OUTPUT_PATH/VexGram.ipa"
-            echo "Copied IPA from: $IPA"
+          if [ -f "$OUTPUT_PATH/VexGram.ipa" ]; then
+            echo "IPA already at $OUTPUT_PATH/VexGram.ipa (from Make.py)"
           else
-            echo "VexGram.ipa not found. Listing bazel-out:"
-            ls -la bazel-out/ 2>/dev/null || true
-            find bazel-out -name "*.ipa" 2>/dev/null || true
-            exit 1
+            IPA=""
+            for pattern in bazel-out/ios_arm64-opt-ios-arm64-min*/bin/Telegram/VexGram.ipa bazel-out/applebin_ios-ios_arm*-opt-ST-*/bin/Telegram/VexGram.ipa; do
+              [ -f "$pattern" ] && IPA="$pattern" && break
+            done
+            if [ -z "$IPA" ]; then
+              IPA=$(find bazel-out -name "VexGram.ipa" -type f 2>/dev/null | head -1)
+            fi
+            if [ -n "$IPA" ]; then
+              cp "$IPA" "$OUTPUT_PATH/VexGram.ipa"
+              echo "Copied IPA from: $IPA"
+            else
+              echo "VexGram.ipa not found. Listing bazel-out:"
+              ls -laR bazel-out/ 2>/dev/null || true
+              find bazel-out -name "*.ipa" 2>/dev/null || true
+              exit 1
+            fi
           fi
 
       - name: Save Bazel cache

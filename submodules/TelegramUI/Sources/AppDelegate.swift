@@ -555,6 +555,11 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         let rootPath = rootPathForBasePath(containerPath)
         performAppGroupUpgrades(appGroupPath: containerPath, rootPath: rootPath)
         
+        if maybeAppGroupUrl == nil {
+            self.mainWindow?.hostView.containerView.backgroundColor = .white
+            try? FileManager.default.createDirectory(atPath: rootPath + "/accounts-metadata", withIntermediateDirectories: true)
+        }
+        
         let deviceSpecificEncryptionParameters = BuildConfig.deviceSpecificEncryptionParameters(rootPath, baseAppBundleId: baseAppBundleId)
         let encryptionParameters = ValueBoxEncryptionParameters(forceEncryptionIfNoSet: false, key: ValueBoxEncryptionParameters.Key(data: deviceSpecificEncryptionParameters.key)!, salt: ValueBoxEncryptionParameters.Salt(data: deviceSpecificEncryptionParameters.salt)!)
         

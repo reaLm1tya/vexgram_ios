@@ -388,14 +388,19 @@ public func nativeWindowHostView() -> (UIWindow & WindowHost, WindowHostView) {
     rootViewController.view.frame = CGRect(origin: CGPoint(), size: window.bounds.size)
     rootViewController.endAppearanceTransition()
     
-    // Force UIKit’s UIScrollView gesture compatibility (dispatch_once) to run now, before our
-    // view controllers load. Avoids EXC_BREAKPOINT in Swift runtime (NSClassFromString) when
-    // the first scroll view is created later (e.g. sideloaded/AltStore).
+    // Force UIKit one-time inits to run on main thread now, before our view controllers load.
+    // Avoids EXC_BREAKPOINT in Swift runtime (NSClassFromString) when first scroll view or
+    // navigation bar is created later (e.g. sideloaded/AltStore).
     let _ = { () -> UIScrollView in
         let scroll = UIScrollView(frame: .zero)
         rootViewController.view.addSubview(scroll)
         scroll.removeFromSuperview()
         return scroll
+    }()
+    let _ = { () -> UINavigationController in
+        let nav = UINavigationController(rootViewController: UIViewController())
+        _ = nav.view
+        return nav
     }()
     
     let hostView = WindowHostView(

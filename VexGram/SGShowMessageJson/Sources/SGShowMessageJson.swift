@@ -41,7 +41,7 @@ public func showMessageJson(controllerInteraction: ChatControllerInteraction, ch
     }
 }
 
-extension MemoryBuffer: WrapCustomizable {
+extension MemoryBuffer: @retroactive WrapCustomizable {
     
     public func wrap(context: Any?, dateFormatter: DateFormatter?) -> Any? {
         let hexString = self.description
@@ -50,7 +50,7 @@ extension MemoryBuffer: WrapCustomizable {
 }
 
 // There's a chacne we will need it for each empty/weird type, or it will be a runtime crash.
-extension ContentRequiresValidationMessageAttribute: WrapCustomizable {
+extension ContentRequiresValidationMessageAttribute: @retroactive WrapCustomizable {
     
     public func wrap(context: Any?, dateFormatter: DateFormatter?) -> Any? {
         return ["@type": "ContentRequiresValidationMessageAttribute"]

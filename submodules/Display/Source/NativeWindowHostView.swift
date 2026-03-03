@@ -315,12 +315,8 @@ private final class NativeWindow: UIWindow, WindowHost {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        if let gestureRecognizers = self.gestureRecognizers {
-            for recognizer in gestureRecognizers {
-                recognizer.delaysTouchesBegan = false
-            }
-        }
+        // Do not set delaysTouchesBegan on self.gestureRecognizers: system gate recognizers
+        // may be added later and must not be modified (causes crash/undefined behavior on iOS).
     }
     
     required init?(coder aDecoder: NSCoder) {

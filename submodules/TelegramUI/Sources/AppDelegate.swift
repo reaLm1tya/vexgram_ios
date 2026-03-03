@@ -1239,7 +1239,9 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
                     print("Launch to ready took \((CFAbsoluteTimeGetCurrent() - launchStartTime) * 1000.0) ms")
 
                     self.mainWindow.debugAction = nil
-                    self.mainWindow.viewController = context.rootController
+                    // Defer root assignment to next run loop so window/gesture hierarchy is ready (avoids crash on first tap when sideloaded).
+                    Queue.mainQueue().async {
+                        self.mainWindow.viewController = context.rootController
                     
                     if firstTime {
                         let layer = context.rootController.view.layer
@@ -1283,6 +1285,7 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
                     let _ = (context.context.sharedContext.presentationData.start(next: { presentationData in
                         SGLocalizationManager.shared.downloadLocale(presentationData.strings.baseLanguageCode)
                     }))
+                    }
                 }))
             } else {
                 self.mainWindow.viewController = nil

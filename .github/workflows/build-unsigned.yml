@@ -157,6 +157,7 @@ jobs:
 
       - name: Save Bazel cache
         if: success()
+        continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: /private/var/tmp/_bazel_containerhost

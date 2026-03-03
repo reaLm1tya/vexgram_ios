@@ -475,7 +475,10 @@ private func extractAccountManagerState(records: AccountRecordsView<TelegramAcco
         
         let appVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "unknown"
         
-        let baseAppBundleId = Bundle.main.bundleIdentifier!
+        guard let baseAppBundleId = Bundle.main.bundleIdentifier, !baseAppBundleId.isEmpty else {
+            self.mainWindow?.presentNative(UIAlertController(title: nil, message: "Invalid app configuration (bundle ID).", preferredStyle: .alert))
+            return true
+        }
         let appGroupName = "group.\(baseAppBundleId)"
         let maybeAppGroupUrl = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupName)
         
